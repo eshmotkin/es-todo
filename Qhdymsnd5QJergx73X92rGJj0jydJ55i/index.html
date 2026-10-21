@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 7:12 PM">
+<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 7:17 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Wed Oct 21</title>
@@ -194,7 +194,7 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 7:12 PM ET</div>
+<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 7:17 PM ET</div>
 <button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 </header>
 <div class="cols">
@@ -1332,15 +1332,27 @@ function payloadFor(c,a,text,snz){var p={type:AKEY[a],key:c.dataset.key,label:c.
   if(a==='snooze'&&snz)p.snooze_until=et(snz);
   if(c.dataset.mid){p.gmail_message_id=c.dataset.mid;p.gmail_thread_id=c.dataset.tid||null;p.sender_email=c.dataset.from||null;p.to=c.dataset.to||null;p.subject=c.dataset.subj||null}
   p.sent_at=et(Date.now());return p}
-/* POST: try CORS first; on a network/CORS failure retry no-cors (text/plain, response unreadable). */
-function post(p){var c=cfg(),body=JSON.stringify(p),ctl=window.AbortController?new AbortController():null,to=ctl&&setTimeout(function(){ctl.abort()},15000);
-  var h=authHeaders(c);h['Content-Type']='application/json';
-  return fetch(c.url,{method:'POST',mode:'cors',headers:h,body:body,signal:ctl&&ctl.signal}).then(function(r){clearTimeout(to);
-      if(r.ok){logSent(p,r.status);return {ok:true,status:r.status}}
-      return r.text().catch(function(){return ''}).then(function(t){return {ok:false,error:'HTTP '+r.status+(t?' · '+t.slice(0,120):'')}})},
-    function(err){clearTimeout(to);if(err&&err.name==='AbortError')return {ok:false,error:'timed out'};
-      /* CORS/network failure: do NOT fall back to no-cors (it drops the auth header and can never be confirmed). Keep it queued. */
-      return {ok:false,error:'blocked/no connection (CORS or network)'}})}
+/* POST via relay: the webhook blocks browser CORS, so the page encrypts {url,key,payload} to the box's public key
+   and posts it to a ntfy.sh topic (CORS-open). The box poller decrypts and forwards with curl, then acks on <topic>-ack. */
+var RELAY={"topic": "jemtodo-Dg1VnNAYjAu3Rey8nX3oyCRc", "pub": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxFNOqYNSuXkPtK3VvokWaqa07CFmiBbWFDTi3GEZyQXgnOgrbWpcsD9G3+l+VOwkXTRniGpQf7aT6Z17dMwYtD9fFRjAECpKutmYB72sIugNWtQUXQccbAMWmoArIDMeNm1I9RxAeM3uYfFtVHj252znbNnK5rqHZbFxniizlTyNklaObtIBuoOrhLb9BqZx5+coJv1mHyA+OtDtpWUtqe08TEhVj14J4CnIdGQf/1/b4RbxmaIYuJfCv9z/RtPIgI3Aw7QGzwGpPRA+dOdKt2OSxH4F5T0s/kA8DOhGff9sKkxLADTKpG1Q7Gpwltov4KSlqKkdNXWkFLvIRUd1wwIDAQAB"};
+function b64(buf){var s='',a=new Uint8Array(buf);for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);return btoa(s)}
+function unb64(s){var b=atob(s),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a}
+var PUBK=null;function pubKey(){return PUBK||(PUBK=crypto.subtle.importKey('spki',unb64(RELAY.pub),{name:'RSA-OAEP',hash:'SHA-256'},false,['encrypt']))}
+function rid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
+function seal(inner){var ak,iv=crypto.getRandomValues(new Uint8Array(12));
+  return crypto.subtle.generateKey({name:'AES-GCM',length:256},true,['encrypt']).then(function(k){ak=k;
+    return crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,new TextEncoder().encode(JSON.stringify(inner)))}).then(function(ct){
+    return crypto.subtle.exportKey('raw',ak).then(function(raw){return pubKey().then(function(pk){return crypto.subtle.encrypt({name:'RSA-OAEP'},pk,raw)})}).then(function(ek){
+      return {v:1,ek:b64(ek),iv:b64(iv),ct:b64(ct)}})})}
+function post(p){var c=cfg(),h=authHeaders(c),hn=Object.keys(h)[0],id=rid();
+  return seal({id:id,url:c.url,key:h[hn],header:hn,payload:p}).then(function(env){
+    return fetch('https://ntfy.sh/'+RELAY.topic,{method:'POST',body:JSON.stringify(env)})}).then(function(r){
+      if(r.ok){logSent(p,'relayed');return {ok:true,status:'relayed',id:id}}return {ok:false,error:'relay HTTP '+r.status}},
+    function(e){return {ok:false,error:'no connection'}})}
+function waitAck(id,ms){var t0=Date.now(),since=Math.floor(t0/1000)-60;
+  return new Promise(function(res){(function poll(){fetch('https://ntfy.sh/'+RELAY.topic+'-ack/json?poll=1&since='+since,{cache:'no-store'}).then(function(r){return r.text()}).then(function(tx){
+    var hit=null;tx.split('\n').forEach(function(l){try{var m=JSON.parse(l),a=JSON.parse(m.message);if(a.id===id)hit=a}catch(e){}});
+    if(hit)return res(hit);if(Date.now()-t0>ms)return res(null);setTimeout(poll,4000)}).catch(function(){if(Date.now()-t0>ms)res(null);else setTimeout(poll,4000)})})()})}
 var SLK='jem-sent-log-v1';function sentLog(){var q=load(SLK);return Array.isArray(q.items)?q.items:[]}
 function logSent(p,st){var l=sentLog();l.push({p:p,status:st,at:Date.now()});save(SLK,{items:l.slice(-300)})}
 function plain(lab,a,v,title){return lab+' '+ACT[a]+': '+v+' — '+title}
@@ -1403,15 +1415,16 @@ $('#cfSave').addEventListener('click',function(){if(!saveCfg())return;dlg.hidden
 $('#cfX').addEventListener('click',function(){localStorage.removeItem(CK);gearState();openDlg();toast('Disconnected')});
 var TOK='jem-sunny-test-ok';
 function runTest(){return post({label:'TEST',title:'Connection test from the to-do page',category:'',source_url:null,action:'test',text:'Connection test, no action needed.',sent_at:et(Date.now())}).then(function(r){
+  if(!r.ok)return r;return waitAck(r.id,90000).then(function(a){return !a?{ok:false,error:'relay got it, but the assistant has not confirmed yet (box offline?)'}:a.ok?{ok:true,status:a.status}:{ok:false,error:'webhook said '+a.status}})}).then(function(r){
   if(r.ok&&!r.unconfirmed)save(TOK,{at:Date.now(),url:cfg().url});else localStorage.removeItem(TOK);linkBtn();return r})}
-function testMsg(r){return r.ok?(r.unconfirmed?'Sent, but the browser could not confirm (CORS). Check the assistant chat.':'Works: test received (HTTP '+r.status+').'):'Failed: '+r.error}
+function testMsg(r){return r.ok?'Works: the assistant received the test (HTTP '+r.status+').':'Failed: '+r.error}
 function linkBtn(){var b=document.getElementById('cfL');if(b)b.hidden=!(connected()&&load(TOK).url===cfg().url)}
 function b64u(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
 function unb64u(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))}
 $('#cfL').addEventListener('click',function(){var c=load(CK),l=location.origin+location.pathname+'#connect='+b64u(JSON.stringify({url:c.url,key:c.key,header:c.header||''}));copy(l);toast('Connect link copied — open it on the other device')});
 $('#cfT').addEventListener('click',function(){if(!saveCfg())return;if(!connected()){$('#cfS').textContent='Add the URL and key first.';$('#cfS').className='dstat err';return}
   $('#cfS').textContent='Testing…';$('#cfS').className='dstat';
-  runTest().then(function(r){$('#cfS').textContent=testMsg(r);$('#cfS').className='dstat '+(r.ok&&!r.unconfirmed?'ok':r.ok?'':'err')})});
+  $('#cfS').textContent='Testing… (up to a minute)';runTest().then(function(r){$('#cfS').textContent=testMsg(r);$('#cfS').className='dstat '+(r.ok&&!r.unconfirmed?'ok':r.ok?'':'err')})});
 /* one-tap connect: #connect=<base64url JSON {url,key,header}> — fragment never reaches the server; stripped at once */
 (function(){var m=location.hash.match(/^#connect=([A-Za-z0-9_-]+)/);if(!m)return;
   try{history.replaceState(null,'',location.pathname+location.search)}catch(e){location.hash=''}
@@ -1470,7 +1483,7 @@ function showUpd(){var n=$('#updnote');if(!n){n=document.createElement('button')
 function saveAllDrafts(){$$('.ireply textarea').forEach(function(t){t.dispatchEvent(new Event('blur'))})}
 function checkUpd(){if(!/^https?:/.test(location.protocol))return;fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){
   var m=h.match(/<meta name="build" content="([^"]*)"/);if(!m||m[1]===BUILD)return;pendingUpd=true;if(busy())showUpd();else location.reload()}).catch(function(){})}
-setInterval(checkUpd,300000);setTimeout(function(){try{if(sessionStorage.getItem('jem-upd-reload')===BUILD)return}catch(e){}fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){var m=h.match(/<meta name="build" content="([^"]*)"/);if(m&&m[1]!==BUILD&&!busy()){try{sessionStorage.setItem('jem-upd-reload',BUILD)}catch(e){}location.replace(location.pathname+'?v='+m[1])}}).catch(function(){})},500);document.addEventListener('visibilitychange',function(){if(!document.hidden)checkUpd()});
+setInterval(checkUpd,60000);window.addEventListener('focus',checkUpd);setTimeout(function(){try{if(sessionStorage.getItem('jem-upd-reload')===BUILD)return}catch(e){}fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){var m=h.match(/<meta name="build" content="([^"]*)"/);if(m&&m[1]!==BUILD&&!busy()){try{sessionStorage.setItem('jem-upd-reload',BUILD)}catch(e){}location.replace(location.pathname+'?v='+m[1])}}).catch(function(){})},500);document.addEventListener('visibilitychange',function(){if(!document.hidden)checkUpd()});
 window.addEventListener('pagehide',saveAllDrafts);
 /* live ticks: poll state.json and apply done keys in place (no reload, typing untouched) */
 function pollState(){if(!/^https?:/.test(location.protocol))return;fetch('state.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(st){
