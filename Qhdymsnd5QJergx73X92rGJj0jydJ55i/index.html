@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 4:22 PM">
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 4:29 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Wed Oct 21</title>
@@ -85,6 +85,8 @@ h2{display:flex;align-items:center;gap:8px;margin:0 4px 10px;font-size:12px;font
 .card.open .chev{transform:rotate(-135deg);margin:4px 4px 0 2px}
 .more{display:none;padding:0 12px 12px 42px}
 .card.open .more{display:block}
+.connnote{font-size:12.5px;color:#92400E;background:#FEF3C7;border-radius:8px;padding:6px 10px;margin:6px 0 0}
+.card.hasdraft .ttl::after{content:"✎ draft";margin-left:6px;font-size:10.5px;font-weight:700;color:#92400E;background:#FEF3C7;border-radius:5px;padding:1px 5px;vertical-align:1px}
 .note{font-size:13px;line-height:1.4;color:#374151;margin-bottom:6px}
 .srclink{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:9px;background:var(--tint);color:var(--navy);font-size:12.5px;font-weight:600;text-decoration:none;max-width:100%}
 .srclink span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -190,8 +192,8 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 4:22 PM ET</div>
-<button class="gear" id="gear" aria-label="Connect to Sunny" title="Connect to Sunny"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
+<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 4:29 PM ET</div>
+<button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 </header>
 <div class="cols">
 <div class="col c1">
@@ -696,11 +698,10 @@ Mendel</div><button class="bmore" type="button" hidden>Show more</button></div><
   <div class="grab"></div>
   <div class="sh-head"><span class="lab" id="shLab"></span><span class="sh-title" id="shTitle"></span></div>
   <div class="view" data-v="menu">
+    <button class="mi" data-a="act"><i>⚡</i>Action</button>
     <button class="mi" data-a="reply"><i>↩</i>Reply</button>
-    <button class="mi" data-a="act"><i>⚡</i>Take action</button>
     <button class="mi" data-a="draft"><i>✎</i>Draft reply</button>
     <button class="mi sub" data-a="snooze"><i>☾</i>Snooze</button>
-    <button class="mi" data-a="instr"><i>✦</i>Instructions to Sunny</button>
     <button class="mi" data-a="wake" hidden><i>☀</i>Unsnooze</button>
   </div>
   <div class="view" data-v="snooze">
@@ -717,12 +718,13 @@ Mendel</div><button class="bmore" type="button" hidden>Show more</button></div><
   <div class="view" data-v="text">
     <div class="vt"><button class="back" aria-label="Back">‹</button><span id="txtTitle"></span></div>
     <textarea id="txt" aria-label="Message" autocomplete="on" autocorrect="on" autocapitalize="sentences" spellcheck="true" inputmode="text"></textarea>
+    <div class="connnote" id="connNote" hidden>Connect once in ⚙ to send. Saved and queued until then.</div>
     <div class="acts"><button class="btn ghost" id="cancel">Cancel</button><button class="btn" id="send">Send</button></div>
   </div>
 </div>
 <div class="dlg" id="dlg" hidden role="dialog" aria-modal="true" aria-labelledby="dlgT"><div class="dbox">
-  <h3 id="dlgT">Connect to Sunny</h3>
-  <p>Paste the webhook URL and sender key from Sunny’s routine panel (desktop app → routine → Webhook). Saved only on this device.</p>
+  <h3 id="dlgT">Connect</h3>
+  <p>Paste the webhook URL and sender key from the “To-do page actions” routine panel (desktop app → routine → Webhook). Saved only on this device.</p>
   <label for="cfU">Webhook URL (“POST to”)</label><input id="cfU" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://…">
   <label for="cfK">Sender key</label><input id="cfK" type="password" autocomplete="off" spellcheck="false" placeholder="key, or the full “Authorization: Bearer …” header">
   <label for="cfH">Header name</label><input id="cfH" type="text" autocomplete="off" spellcheck="false" placeholder="Authorization">
@@ -743,9 +745,9 @@ var D=load(DK),Z=load(ZK),$=function(s,r){return (r||document).querySelector(s)}
 var cards=$$('.card:not(.static)');cards.forEach(function(c,i){c._i=i;c._home=c.parentNode;
   if(c.dataset.done&&!D[c.dataset.key])D[c.dataset.key]=Date.now()});  /* done on the ES Board / doc always wins */
 save(DK,D);
-var ACT={reply:'reply',act:'take action',draft:'draft reply',instr:'instructions',snooze:'snooze'};
-var AKEY={reply:'reply',act:'take_action',draft:'draft_reply',instr:'instructions',snooze:'snooze',done:'done',undone:'undone'};
-var NAME={reply:'Reply',act:'Take action',draft:'Draft reply',instr:'Instructions to Sunny',snooze:'Snooze'};
+var AKEY={reply:'reply',act:'action',draft:'draft_request',snooze:'snooze',done:'done',undone:'undone'};
+var NAME={reply:'Reply',act:'Action',draft:'Draft reply',snooze:'Snooze'};
+var HINT={act:'Instructions for the assistant…',reply:'Your reply, as you want it sent (a draft comes back for your OK)…',draft:'Anything the draft should say (optional)…',snooze:'Note (optional)…'};
 function buzz(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}}
 function fmt(t){var d=new Date(t),n=new Date(),tm=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
   var dd=new Date(n);dd.setHours(0,0,0,0);var diff=Math.round((new Date(d).setHours(0,0,0,0)-dd)/864e5);
@@ -787,7 +789,8 @@ function render(){
 $$('.snz-toggle').forEach(function(b){b.addEventListener('click',function(){var box=b.nextElementSibling;box.hidden=!box.hidden})});
 
 /* tap / long-press */
-var OK_='jem-open-v2';(function(){var OP=load(OK_);cards.forEach(function(c){if(OP[c.dataset.key])c.classList.add('open')})})();
+/* every card starts collapsed: open state is never stored or restored */
+try{['jem-open-v1','jem-open-v2'].forEach(function(k){localStorage.removeItem(k)})}catch(x){}cards.forEach(function(c){c.classList.remove('open')});
 var timer=null,fired=false,sx=0,sy=0,cur=null,pressEl=null;
 function cancelPress(){clearTimeout(timer);timer=null;if(pressEl){pressEl.classList.remove('press');pressEl=null}}
 cards.forEach(function(c){
@@ -802,14 +805,14 @@ sx=e.clientX;sy=e.clientY;pressEl=c;c.classList.add('press');
     if(e.target.closest('a,.chk')){fired=false;return}  /* links & checkbox: never intercepted */
     if(fired){fired=false;return}
     if(!e.target.closest('.row,.face'))return;  /* only the header/summary toggles; excerpt, reply box, buttons never do */
-    c.classList.toggle('open');var OP=load(OK_);if(c.classList.contains('open')){OP[c.dataset.key]=1;fitBody(c)}else delete OP[c.dataset.key];save(OK_,OP)});
+    c.classList.toggle('open');if(c.classList.contains('open'))fitBody(c)});
   var bm=$('.bmore',c);if(bm)bm.addEventListener('click',function(e){e.stopPropagation();var b=bm.parentNode;b.classList.toggle('full-open');bm.textContent=b.classList.contains('full-open')?'Show less':'Show more'});
   $('input',c).addEventListener('change',function(e){var k=c.dataset.key,on=this.checked;if(on){D[k]=Date.now();buzz(10)}else delete D[k];save(DK,D);render();
     /* tell Sunny so the ES Board / Today doc get marked too (localStorage stays the page's own record) */
     var tp=payloadFor(c,on?'done':'undone',on?'Marked done on the to-do page':'Un-ticked on the to-do page');
     if(!connected()){var q=queue();q.push(tp);setQueue(q);toast(on?'Done here · queued for the board (open ⚙ to connect)':'Un-ticked here · queued');return}
     post(tp).then(function(r){if(!r.ok){var q=queue();q.push(tp);setQueue(q)}
-      toast(r.ok?(r.unconfirmed?(on?'Done · sent (unconfirmed)':'Un-ticked · sent (unconfirmed)'):(on?'Done · Sunny will mark the board':'Un-ticked · Sunny notified')):'Saved here; Sunny not reached ('+r.error.split(' · ')[0]+')')})});
+      toast(r.ok?(r.unconfirmed?(on?'Done · sent (unconfirmed)':'Un-ticked · sent (unconfirmed)'):(on?'Done · board will be marked':'Un-ticked · sent')):'Saved here; not reached ('+r.error.split(' · ')[0]+')')})});
   $$('a',c).forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation();
     if(a.dataset.wa){var n=a.dataset.wa.split(' (')[0].split(' ·')[0];copy(n);toast('Chat “'+n+'” copied: search it in WhatsApp')}})});
 });
@@ -832,8 +835,8 @@ $$('.mi',sh).forEach(function(b){b.addEventListener('click',function(){var a=b.d
   if(a==='wake'){delete Z[cur.dataset.key];save(ZK,Z);render();closeSheet();toast('Unsnoozed');return}
   openText(a)})});
 var snzAt=null;
-function openText(a,title){mode=a;$('#txtTitle').textContent=title||NAME[a];var t=$('#txt');t.value=NAME[a].replace(' to Sunny','')+': ';
-  $('#send').textContent=connected()?'Send to Sunny':'Copy for Sunny';view('text');
+function openText(a,title){mode=a;$('#txtTitle').textContent=title||NAME[a];var t=$('#txt');t.value='';t.placeholder=HINT[a]||'';
+  $('#send').textContent='Send';$('#connNote').hidden=connected();view('text');
   setTimeout(function(){t.focus();t.setSelectionRange(t.value.length,t.value.length)},230)}
 function until(z){var d=new Date();
   if(z==='1h')return Date.now()+36e5; if(z==='3h')return Date.now()+3*36e5;
@@ -841,13 +844,12 @@ function until(z){var d=new Date();
   if(z==='2d')return Date.now()+2*864e5; if(z==='1w')return Date.now()+7*864e5}
 function applySnooze(c,t){Z[c.dataset.key]=t;save(ZK,Z);c.classList.remove('open');render()}
 /* connected: pick a time, add an optional note, Send = snooze + tell Sunny. Not connected: snooze right away (local only). */
-function snooze(t){if(connected()){snzAt=t;openText('snooze','Snooze until '+fmt(t));return}
-  applySnooze(cur,t);closeSheet();buzz(15);toast('Snoozed until '+fmt(t))}
+function snooze(t){snzAt=t;openText('snooze','Snooze until '+fmt(t))}
 $$('.chip',sh).forEach(function(ch){ch.addEventListener('click',function(){snooze(until(ch.dataset.z))})});
 $('#zSet').addEventListener('click',function(){var n=parseFloat($('#zN').value);if(!(n>0)){$('#zN').focus();return}
   snooze(Date.now()+n*($('#zU').value==='d'?864e5:36e5))});
 $('#cancel').addEventListener('click',closeSheet);
-/* ---- Connect to Sunny (webhook) ---- */
+/* ---- Connect (webhook) ---- */
 var CK='jem-sunny-v1';
 function cfg(){var c=load(CK);return {url:(c.url||'').trim(),key:(c.key||'').trim(),header:(c.header||'').trim()||'Authorization'}}
 function okUrl(u){return /^https:\/\//i.test(u)||/^http:\/\/(127\.0\.0\.1|localhost)[:/]/i.test(u)}
@@ -872,14 +874,15 @@ function post(p){var c=cfg(),body=JSON.stringify(p),ctl=window.AbortController?n
         function(e2){return {ok:false,error:'network error'}})})}
 function plain(lab,a,v,title){return lab+' '+ACT[a]+': '+v+' — '+title}
 $('#send').addEventListener('click',function(){
-  var c=cur,a=mode,lab=c.dataset.label,v=$('#txt').value.trim(),pre=NAME[a].replace(' to Sunny','')+':';
-  [pre,lab+' '+ACT[a]+':'].forEach(function(x){if(v.toLowerCase().indexOf(x.toLowerCase())===0)v=v.slice(x.length).trim()});
-  var msg=plain(lab,a,v,c.dataset.title)+(a==='snooze'&&snzAt?' (until '+et(snzAt)+')':'');
-  if(!connected()){if(a==='snooze'&&snzAt)applySnooze(c,snzAt);copy(msg);buzz([12,40,12]);closeSheet();toast('Copied, paste to Sunny');return}
-  var b=$('#send'),at=snzAt;b.disabled=true;b.textContent='Sending…';
-  post(payloadFor(c,a,v,at)).then(function(r){b.disabled=false;b.textContent='Send to Sunny';
-    if(r.ok){if(a==='snooze'&&at)applySnooze(c,at);closeSheet();buzz([12,40,12]);toast(r.unconfirmed?'Sent (unconfirmed)':(c.dataset.mid&&(a==='reply'||a==='draft')?'Sent to Sunny — draft coming for your OK':'Sent to Sunny'))}
-    else{copy(msg);buzz([40,60,40]);toast('Not sent ('+r.error.split(' · ')[0]+'). Copied, paste to Sunny');$('#txtTitle').textContent='Not sent: '+r.error}})});
+  var c=cur,a=mode,v=$('#txt').value.trim(),at=a==='snooze'?snzAt:null;
+  if(!v&&(a==='act'||a==='reply')){$('#txt').focus();return}
+  var p=payloadFor(c,a,v,at);
+  function done(msg){if(a==='snooze'&&at)applySnooze(c,at);closeSheet();buzz([12,40,12]);toast(msg)}
+  if(!connected()){var q=queue();q.push(p);setQueue(q);done((a==='snooze'?'Snoozed · ':'')+'Queued · connect once in ⚙ to send');return}
+  var b=$('#send');b.disabled=true;b.textContent='Sending…';
+  post(p).then(function(r){b.disabled=false;b.textContent='Send';
+    if(r.ok)done(r.unconfirmed?'Sent (unconfirmed)':(a==='reply'||a==='draft'?'Sent — draft coming for your OK':'Sent'));
+    else{var q=queue();q.push(p);setQueue(q);done('Not sent ('+r.error.split(' · ')[0]+') · queued, resends automatically')}})});
 /* inline Reply under the email preview (no hold needed) */
 var QK='jem-reply-queue-v1';function queue(){var q=load(QK);return Array.isArray(q.items)?q.items:[]}
 function setQueue(a){save(QK,{items:a})}
@@ -887,11 +890,12 @@ function irmsg(box,html,ok){var m=box.parentNode.querySelector('.irmsg');if(!m){
   m.className='irmsg'+(ok?' ok':'');m.innerHTML=html;var g=m.querySelector('[data-gear]');if(g)g.addEventListener('click',function(e){e.stopPropagation();openDlg()})}
 function flushQueue(){var q=queue();if(!q.length||!connected())return;var left=[],n=0;
   q.reduce(function(pr,p){return pr.then(function(){return post(p).then(function(r){if(r.ok)n++;else left.push(p)})})},Promise.resolve()).then(function(){setQueue(left);
-    $$('.irmsg').forEach(function(m){m.remove()});toast(n?('Sent '+n+' queued repl'+(n>1?'ies':'y')+' — drafts coming for your OK'):'Queued replies not sent yet')})}
+    $$('.irmsg').forEach(function(m){m.remove()});toast(n?('Sent '+n+' queued item'+(n>1?'s':'')):'Queued items not sent yet')})}
 $$('.ireply').forEach(function(box){var c=box.closest('.card'),t=$('textarea',box),b=$('.irsend',box);
   ['click','pointerdown'].forEach(function(ev){box.addEventListener(ev,function(e){e.stopPropagation()})});
-  var DRK='jem-draft-v1',k=c.dataset.key,DR=load(DRK);if(DR[k]&&!t.value){t.value=DR[k];c.classList.add('open');setTimeout(function(){t.style.height=Math.min(160,Math.max(40,t.scrollHeight+2))+'px'},0)}
-  function saveDraft(){var d=load(DRK);if(t.value.trim())d[k]=t.value;else delete d[k];save(DRK,d)}
+  var DRK='jem-draft-v1',k=c.dataset.key,DR=load(DRK);if(DR[k]&&!t.value){t.value=DR[k];setTimeout(function(){t.style.height=Math.min(160,Math.max(40,t.scrollHeight+2))+'px'},0)}
+  function mark(){c.classList.toggle('hasdraft',!!t.value.trim())}mark();
+  function saveDraft(){var d=load(DRK);if(t.value.trim())d[k]=t.value;else delete d[k];save(DRK,d);mark()}
   t.addEventListener('input',saveDraft);t.addEventListener('blur',saveDraft);
   var raf=0;t.addEventListener('input',function(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;t.style.height='auto';t.style.height=Math.min(160,Math.max(40,t.scrollHeight+2))+'px'})});
   if(queue().some(function(p){return p.label===c.dataset.label}))irmsg(box,'Not connected — reply queued. Open <button type="button" class="gearlink" data-gear>⚙</button> to connect and it sends.');
@@ -904,21 +908,21 @@ $$('.ireply').forEach(function(box){var c=box.closest('.card'),t=$('textarea',bo
       else{var q=queue();q.push(payloadFor(c,'reply',v));setQueue(q);buzz([40,60,40]);irmsg(box,'Not sent ('+r.error.split(' · ')[0]+'). Saved here; it resends when the connection works. Check <button type="button" class="gearlink" data-gear>⚙</button>.')}})})});
 /* settings dialog */
 var dlg=$('#dlg');
-function gearState(){$('#gear').classList.toggle('on',connected());$('#gear').title=connected()?'Connected to Sunny':'Connect to Sunny'}
+function gearState(){$('#gear').classList.toggle('on',connected());$('#gear').title=connected()?'Connected':'Connect'}
 function openDlg(){var c=load(CK);$('#cfU').value=c.url||'';$('#cfK').value=c.key||'';$('#cfH').value=c.header||'';
-  $('#cfS').textContent=connected()?'Connected. Actions go straight to Sunny.':'Not connected: actions are copied to the clipboard.';$('#cfS').className='dstat'+(connected()?' ok':'');dlg.hidden=false}
+  $('#cfS').textContent=connected()?'Connected. Actions send straight to the assistant.':'Not connected: actions are queued on this device and send once you connect.';$('#cfS').className='dstat'+(connected()?' ok':'');dlg.hidden=false}
 function saveCfg(){var u=$('#cfU').value.trim(),k=$('#cfK').value.trim(),h=$('#cfH').value.trim();
   if(u&&!okUrl(u)){$('#cfS').textContent='The URL must start with https://';$('#cfS').className='dstat err';return false}
   save(CK,{url:u,key:k,header:h});gearState();setTimeout(flushQueue,0);return true}
 $('#gear').addEventListener('click',openDlg);
 $('#cfC').addEventListener('click',function(){dlg.hidden=true});
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.hidden=true});
-$('#cfSave').addEventListener('click',function(){if(!saveCfg())return;dlg.hidden=true;toast(connected()?'Connected to Sunny':'Saved (not connected)')});
+$('#cfSave').addEventListener('click',function(){if(!saveCfg())return;dlg.hidden=true;toast(connected()?'Connected':'Saved (not connected)')});
 $('#cfX').addEventListener('click',function(){localStorage.removeItem(CK);gearState();openDlg();toast('Disconnected')});
 $('#cfT').addEventListener('click',function(){if(!saveCfg())return;if(!connected()){$('#cfS').textContent='Add the URL and key first.';$('#cfS').className='dstat err';return}
   $('#cfS').textContent='Testing…';$('#cfS').className='dstat';
   post({label:'TEST',title:'Connection test from the to-do page',category:'',source_url:null,action:'test',text:'Connection test, no action needed.',sent_at:et(Date.now())}).then(function(r){
-    $('#cfS').textContent=r.ok?(r.unconfirmed?'Sent, but the browser could not confirm (CORS). Check Sunny’s chat.':'Works: Sunny received the test (HTTP '+r.status+').'):'Failed: '+r.error;
+    $('#cfS').textContent=r.ok?(r.unconfirmed?'Sent, but the browser could not confirm (CORS). Check the assistant chat.':'Works: test received (HTTP '+r.status+').'):'Failed: '+r.error;
     $('#cfS').className='dstat '+(r.ok&&!r.unconfirmed?'ok':r.ok?'':'err')})});
 gearState();
 function copyFallback(s){var t=document.createElement('textarea');t.value=s;t.setAttribute('readonly','');t.style.cssText='position:fixed;top:-1000px;opacity:0';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove()}
