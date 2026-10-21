@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 2:23 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Wed Oct 21</title>
@@ -187,9 +187,10 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 .ireply,.ireply textarea,#txt{-webkit-user-select:text!important;user-select:text!important;-webkit-touch-callout:default!important;touch-action:auto!important;cursor:text}
 .irmsg{font-size:12.5px;color:#92400E;background:#FEF3C7;border-radius:8px;padding:6px 9px;margin-top:6px}.irmsg .gearlink{border:0;background:none;padding:0 2px;font:inherit;color:var(--navy);font-weight:700;cursor:pointer;text-decoration:underline}.irmsg.ok{color:#065F46;background:#D1FAE5}
 .row,.face{cursor:pointer}
+#updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 2:21 PM ET</div>
+<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 2:23 PM ET</div>
 <button class="gear" id="gear" aria-label="Connect to Sunny" title="Connect to Sunny"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 </header>
 <div class="cols">
@@ -740,6 +741,7 @@ function render(){
 $$('.snz-toggle').forEach(function(b){b.addEventListener('click',function(){var box=b.nextElementSibling;box.hidden=!box.hidden})});
 
 /* tap / long-press */
+var OK_='jem-open-v1';(function(){var OP=load(OK_);cards.forEach(function(c){if(OP[c.dataset.key])c.classList.add('open')})})();
 var timer=null,fired=false,sx=0,sy=0,cur=null,pressEl=null;
 function cancelPress(){clearTimeout(timer);timer=null;if(pressEl){pressEl.classList.remove('press');pressEl=null}}
 cards.forEach(function(c){
@@ -754,11 +756,13 @@ sx=e.clientX;sy=e.clientY;pressEl=c;c.classList.add('press');
     if(e.target.closest('a,.chk')){fired=false;return}  /* links & checkbox: never intercepted */
     if(fired){fired=false;return}
     if(!e.target.closest('.row,.face'))return;  /* only the header/summary toggles; excerpt, reply box, buttons never do */
-    c.classList.toggle('open');if(c.classList.contains('open'))fitBody(c)});
+    c.classList.toggle('open');var OP=load(OK_);if(c.classList.contains('open')){OP[c.dataset.key]=1;fitBody(c)}else delete OP[c.dataset.key];save(OK_,OP)});
   var bm=$('.bmore',c);if(bm)bm.addEventListener('click',function(e){e.stopPropagation();var b=bm.parentNode;b.classList.toggle('full-open');bm.textContent=b.classList.contains('full-open')?'Show less':'Show more'});
   $('input',c).addEventListener('change',function(e){var k=c.dataset.key,on=this.checked;if(on){D[k]=Date.now();buzz(10)}else delete D[k];save(DK,D);render();
     /* tell Sunny so the ES Board / Today doc get marked too (localStorage stays the page's own record) */
-    if(connected())post(payloadFor(c,on?'done':'undone',on?'Marked done on the to-do page':'Un-ticked on the to-do page')).then(function(r){
+    var tp=payloadFor(c,on?'done':'undone',on?'Marked done on the to-do page':'Un-ticked on the to-do page');
+    if(!connected()){var q=queue();q.push(tp);setQueue(q);toast(on?'Done here · queued for the board (open ⚙ to connect)':'Un-ticked here · queued');return}
+    post(tp).then(function(r){if(!r.ok){var q=queue();q.push(tp);setQueue(q)}
       toast(r.ok?(r.unconfirmed?(on?'Done · sent (unconfirmed)':'Un-ticked · sent (unconfirmed)'):(on?'Done · Sunny will mark the board':'Un-ticked · Sunny notified')):'Saved here; Sunny not reached ('+r.error.split(' · ')[0]+')')})});
   $$('a',c).forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation();
     if(a.dataset.wa){var n=a.dataset.wa.split(' (')[0].split(' ·')[0];copy(n);toast('Chat “'+n+'” copied: search it in WhatsApp')}})});
@@ -840,14 +844,17 @@ function flushQueue(){var q=queue();if(!q.length||!connected())return;var left=[
     $$('.irmsg').forEach(function(m){m.remove()});toast(n?('Sent '+n+' queued repl'+(n>1?'ies':'y')+' — drafts coming for your OK'):'Queued replies not sent yet')})}
 $$('.ireply').forEach(function(box){var c=box.closest('.card'),t=$('textarea',box),b=$('.irsend',box);
   ['click','pointerdown'].forEach(function(ev){box.addEventListener(ev,function(e){e.stopPropagation()})});
+  var DRK='jem-draft-v1',k=c.dataset.key,DR=load(DRK);if(DR[k]&&!t.value){t.value=DR[k];c.classList.add('open');setTimeout(function(){t.style.height=Math.min(160,Math.max(40,t.scrollHeight+2))+'px'},0)}
+  function saveDraft(){var d=load(DRK);if(t.value.trim())d[k]=t.value;else delete d[k];save(DRK,d)}
+  t.addEventListener('input',saveDraft);t.addEventListener('blur',saveDraft);
   var raf=0;t.addEventListener('input',function(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;t.style.height='auto';t.style.height=Math.min(160,Math.max(40,t.scrollHeight+2))+'px'})});
   if(queue().some(function(p){return p.label===c.dataset.label}))irmsg(box,'Not connected — reply queued. Open <button type="button" class="gearlink" data-gear>⚙</button> to connect and it sends.');
   b.addEventListener('click',function(){var v=t.value.trim();if(!v){t.focus();return}
-    if(!connected()){var q=queue();q.push(payloadFor(c,'reply',v));setQueue(q);t.value='';t.style.height='';
+    if(!connected()){var q=queue();q.push(payloadFor(c,'reply',v));setQueue(q);t.value='';saveDraft();t.style.height='';
       irmsg(box,'Not connected — open <button type="button" class="gearlink" data-gear>⚙</button> to connect. Your reply is saved here and sends as soon as you connect.');buzz([40,60,40]);return}
     b.disabled=true;b.textContent='Sending…';
     post(payloadFor(c,'reply',v)).then(function(r){b.disabled=false;b.textContent='Send';
-      if(r.ok){t.value='';t.style.height='';t.blur();buzz([12,40,12]);irmsg(box,r.unconfirmed?'Sent (unconfirmed) — draft should arrive for your OK':'Sent — draft coming for your OK',true)}
+      if(r.ok){t.value='';saveDraft();t.style.height='';t.blur();buzz([12,40,12]);irmsg(box,r.unconfirmed?'Sent (unconfirmed) — draft should arrive for your OK':'Sent — draft coming for your OK',true)}
       else{var q=queue();q.push(payloadFor(c,'reply',v));setQueue(q);buzz([40,60,40]);irmsg(box,'Not sent ('+r.error.split(' · ')[0]+'). Saved here; it resends when the connection works. Check <button type="button" class="gearlink" data-gear>⚙</button>.')}})})});
 /* settings dialog */
 var dlg=$('#dlg');
@@ -906,8 +913,23 @@ function renderCal(){if(!CAL||!CAL.events)return;var now=Date.now(),p=etParts(ne
     var lbl=new Date(tmr+'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric'}).replace(',','');
     h+='<li class="calsub">Tomorrow · '+lbl+'</li>'+(t||none(tmr,'Nothing on the calendar'))}
   $('#cal').innerHTML=h}
-renderCal();setInterval(renderCal,60000);setTimeout(flushQueue,1500);document.addEventListener('visibilitychange',function(){if(!document.hidden)renderCal()});
-window.__todo={openMenu:openMenu,view:view,payloadFor:payloadFor,framed:FRAMED,renderCal:renderCal};
+renderCal();setInterval(renderCal,60000);setTimeout(flushQueue,1500);
+/* new-version check: never reload while someone is typing or has an unsent draft */
+var BUILD=(document.querySelector('meta[name=build]')||{}).content,pendingUpd=false;
+function busy(){var a=document.activeElement;if(a&&/^(TEXTAREA|INPUT)$/.test(a.tagName))return true;if(sheetOn||!$('#dlg').hidden)return true;
+  return $$('textarea').some(function(t){return t.value.trim()&&!/^\w[\w ]*: ?$/.test(t.value.trim())})}
+function showUpd(){var n=$('#updnote');if(!n){n=document.createElement('button');n.id='updnote';n.type='button';n.textContent='Update available · tap to load';n.addEventListener('click',function(){saveAllDrafts();location.reload()});document.body.appendChild(n)}}
+function saveAllDrafts(){$$('.ireply textarea').forEach(function(t){t.dispatchEvent(new Event('blur'))})}
+function checkUpd(){if(!/^https?:/.test(location.protocol))return;fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){
+  var m=h.match(/<meta name="build" content="([^"]*)"/);if(!m||m[1]===BUILD)return;pendingUpd=true;if(busy())showUpd();else location.reload()}).catch(function(){})}
+setInterval(checkUpd,300000);document.addEventListener('visibilitychange',function(){if(!document.hidden)checkUpd()});
+window.addEventListener('pagehide',saveAllDrafts);
+/* live ticks: poll state.json and apply done keys in place (no reload, typing untouched) */
+function pollState(){if(!/^https?:/.test(location.protocol))return;fetch('state.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(st){
+  if(!st||!st.done)return;var ch=false;st.done.forEach(function(k){if(!D[k]){D[k]=Date.now();ch=true}});if(!ch)return;save(DK,D);
+  var a=document.activeElement,keep=a&&a.tagName==='TEXTAREA'?[a,a.selectionStart,a.selectionEnd]:null;render();if(keep&&document.activeElement!==keep[0]){keep[0].focus();try{keep[0].setSelectionRange(keep[1],keep[2])}catch(e){}}}).catch(function(){})}
+setInterval(pollState,60000);setTimeout(pollState,3000);document.addEventListener('visibilitychange',function(){if(!document.hidden)pollState()});document.addEventListener('visibilitychange',function(){if(!document.hidden)renderCal()});
+window.__todo={openMenu:openMenu,view:view,payloadFor:payloadFor,framed:FRAMED,renderCal:renderCal,checkUpd:checkUpd,pollState:pollState,D:function(){return load(DK)}};
 render();setInterval(render,60000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)render()});
 })();
