@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Thu Oct 22, 6:49 PM">
+<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Thu Oct 22, 6:51 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Thu Oct 22</title>
@@ -220,6 +220,26 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 .acard .adet div{padding:2px 0 2px 14px}
 .sheet.pop{left:0;top:0;right:auto;bottom:auto;margin:0;width:min(460px,calc(100vw - 16px));max-height:calc(100vh - 16px);overflow:auto;border-radius:14px;transform:none;transition:opacity .12s;opacity:0;box-shadow:0 10px 30px rgba(17,24,39,.22);padding-bottom:12px}
 .sheet.pop.on{opacity:1}.sheet.pop .grab{display:none}
+.card:not(.static){position:relative}
+.card[data-pri]:not(.static)::after{content:"";position:absolute;top:0;right:0;bottom:0;width:10%;border-radius:0 11px 11px 0;pointer-events:none;z-index:0}
+.card[data-pri=high]:not(.static)::after{background:rgba(217,45,32,.22)}.card[data-pri=medium]:not(.static)::after{background:rgba(247,144,9,.24)}.card[data-pri=low]:not(.static)::after{background:rgba(152,162,179,.28)}
+.card .ptag{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0;margin:0}
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:50%;border:0;background:var(--navy);color:#fff;font:400 32px/1 inherit;font-family:inherit;box-shadow:0 6px 18px rgba(17,24,39,.25);cursor:pointer;z-index:9;display:flex;align-items:center;justify-content:center}
+.fab.on{transform:rotate(45deg)}
+.atpop{position:fixed;right:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:min(380px,calc(100vw - 36px));background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(17,24,39,.22);padding:12px;z-index:9}
+.atpop .addtask{margin:0}
+.scanb{position:absolute;right:2px;top:50px;height:30px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--navy);font:600 12.5px/1 inherit;font-family:inherit;cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.scanb.press{background:var(--tint)}
+.scandd{position:absolute;right:2px;top:86px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(17,24,39,.18);padding:10px 12px;z-index:12;display:flex;flex-direction:column;gap:8px;font-size:14px;min-width:170px}
+.scandd label{display:flex;align-items:center;gap:8px;cursor:pointer}.scandd input{width:17px;height:17px;accent-color:var(--navy)}
+.scanst{position:absolute;right:2px;top:84px;font-size:11.5px;color:var(--gray);max-width:60%;text-align:right}
+header{min-height:96px}
+.vtog{display:inline-flex;gap:4px;margin:6px 0 0;background:var(--tint);border-radius:999px;padding:3px}
+.vtog button{font:600 12.5px/1 inherit;font-family:inherit;border:0;background:none;color:var(--ink);border-radius:999px;padding:7px 12px;cursor:pointer}.vtog button.on{background:#fff;color:var(--navy);box-shadow:0 1px 2px rgba(17,24,39,.12)}
+.ctag{display:none;margin-left:6px;font-size:10.5px;font-weight:600;color:var(--gray);background:#F2F4F7;border-radius:5px;padding:1px 5px;vertical-align:1px}
+body.pv .ctag{display:inline}body.pv section[data-sec]{display:none}body:not(.pv) .psec{display:none}
+.psec h2 .pdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.psec-high .pdot{background:#D92D20}.psec-medium .pdot{background:#F79009}.psec-low .pdot{background:#98A2B3}
 .rdtag{margin-left:6px;font-size:10.5px;font-weight:700;color:#fff;background:#C62828;border-radius:5px;padding:1px 5px;vertical-align:1px}
 .addtask{display:flex;gap:8px;align-items:center;margin:0 0 12px;flex-wrap:wrap}
 .addtask input,.addtask select{font:500 15px/1.2 inherit;font-family:inherit;border:1px solid #CBD5E1;border-radius:12px;padding:10px 12px;background:#fff;color:var(--ink);min-width:0;-webkit-user-select:text;user-select:text}
@@ -233,15 +253,18 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Thu Oct 22</h1><div class="upd">Updated Thu Oct 22, 6:49 PM ET</div>
+<header><h1>Today · Thu Oct 22</h1><div class="upd">Updated Thu Oct 22, 6:51 PM ET</div>
 <button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
+<button class="scanb" id="scanBtn" type="button" title="Scan now (hold to choose channels)" aria-label="Scan now">⟳ Scan</button>
+<div class="scandd" id="scanNow" hidden role="group" aria-label="Scan channels"><label><input type="checkbox" value="email" checked>Email</label><label><input type="checkbox" value="whatsapp" checked>WhatsApp</label><label><input type="checkbox" value="texts" checked>Texts</label><label><input type="checkbox" value="calls" checked>Calls</label><button class="btn" id="scanGo" type="button">Scan</button></div>
+<div class="scanst" id="scanSt" hidden></div>
+<div class="vtog" role="tablist" aria-label="View"><button type="button" data-view="pri">By priority</button><button type="button" data-view="cat">By category</button></div>
 </header>
 <div class="cols">
 <div class="col c1">
-<div class="addtask" id="addTask"><input id="atText" type="text" placeholder="+ Add task…" aria-label="New task" autocomplete="on" autocorrect="on" autocapitalize="sentences" spellcheck="true" inputmode="text" enterkeyhint="done"><select id="atCat" aria-label="Category"><option value="todo">To-do</option><option value="reply">Awaiting Reply</option><option value="review">Review</option><option value="fundraising">Fundraising</option><option value="waiting">Waiting on Others</option><option value="ohel">Home at the Ohel</option><option value="longterm">Big Picture</option></select><button class="btn" id="atAdd" type="button">Add</button></div>
-<div class="scan" id="scanNow" role="group" aria-label="Scan now"><label><input type="checkbox" value="email" checked>Email</label><label><input type="checkbox" value="whatsapp" checked>WhatsApp</label><label><input type="checkbox" value="texts" checked>Texts</label><label><input type="checkbox" value="calls" checked>Calls</label><button class="btn ghost" id="scanBtn" type="button">Scan now</button><span class="sst" id="scanSt" hidden></span></div>
 <ul class="cal" id="cal"><li><span class="d">No more events today</span></li><li class="calsub">Tomorrow · Fri Oct 23</li><li><span class="t">11–11:20 AM</span><span class="d">Daily Huddle [Tentative]</span></li><li><span class="t">11:30–11:55 AM</span><span class="d">Dovid Goldberg</span></li><li><span class="t">11:30 AM–12 PM</span><span class="d">VMS-CCDB migration next steps</span></li><li><span class="t">12:30–1 PM</span><span class="d">re: November 4 event</span></li><li><span class="t">1–2 PM</span><span class="d">Elkanah / Yisroel</span></li></ul>
-<script type="application/json" id="calData">{"calendar": "es@jemedia.org (primary)", "fetched_at": "2026-10-22T18:49:39-04:00", "window": "2026-10-22T00:00:00/2026-10-25T00:00:00", "events": [{"title": "Daily Huddle [Tentative]", "start": "2026-10-22T11:00:00-04:00", "end": "2026-10-22T11:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "DF", "start": "2026-10-22T13:00:00-04:00", "end": "2026-10-22T13:25:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Yossi Deren/Elkanah re HLI Menorah Film", "start": "2026-10-22T13:35:00-04:00", "end": "2026-10-22T14:00:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Doc Meeting Prep", "start": "2026-10-22T15:10:00-04:00", "end": "2026-10-22T15:30:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Documentary - Lipsker", "start": "2026-10-22T15:30:00-04:00", "end": "2026-10-22T16:10:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Dovid/Elkanah", "start": "2026-10-22T16:30:00-04:00", "end": "2026-10-22T16:50:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Elkanah / Yisroel  - Tech Plan", "start": "2026-10-22T17:15:00-04:00", "end": "2026-10-22T17:50:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Avremel", "start": "2026-10-22T17:45:00-04:00", "end": "2026-10-22T18:15:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Daily Huddle [Tentative]", "start": "2026-10-23T11:00:00-04:00", "end": "2026-10-23T11:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Dovid Goldberg", "start": "2026-10-23T11:30:00-04:00", "end": "2026-10-23T11:55:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "VMS-CCDB migration next steps", "start": "2026-10-23T11:30:00-04:00", "end": "2026-10-23T12:00:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "re: November 4 event", "start": "2026-10-23T12:30:00-04:00", "end": "2026-10-23T13:00:00-04:00", "allday": false, "location": "Zoom link below", "tentative": false}, {"title": "Elkanah / Yisroel", "start": "2026-10-23T13:00:00-04:00", "end": "2026-10-23T14:00:00-04:00", "allday": false, "location": "", "tentative": false}]}</script>
+<section class="cat psec psec-high" data-psec="high"><h2><span class="pdot"></span>High <span class="badge">(0)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"></div></div></div></section>
+<script type="application/json" id="calData">{"calendar": "es@jemedia.org (primary)", "fetched_at": "2026-10-22T18:51:21-04:00", "window": "2026-10-22T00:00:00/2026-10-25T00:00:00", "events": [{"title": "Daily Huddle [Tentative]", "start": "2026-10-22T11:00:00-04:00", "end": "2026-10-22T11:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "DF", "start": "2026-10-22T13:00:00-04:00", "end": "2026-10-22T13:25:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Yossi Deren/Elkanah re HLI Menorah Film", "start": "2026-10-22T13:35:00-04:00", "end": "2026-10-22T14:00:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Doc Meeting Prep", "start": "2026-10-22T15:10:00-04:00", "end": "2026-10-22T15:30:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Documentary - Lipsker", "start": "2026-10-22T15:30:00-04:00", "end": "2026-10-22T16:10:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Dovid/Elkanah", "start": "2026-10-22T16:30:00-04:00", "end": "2026-10-22T16:50:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Elkanah / Yisroel  - Tech Plan", "start": "2026-10-22T17:15:00-04:00", "end": "2026-10-22T17:50:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Avremel", "start": "2026-10-22T17:45:00-04:00", "end": "2026-10-22T18:15:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Daily Huddle [Tentative]", "start": "2026-10-23T11:00:00-04:00", "end": "2026-10-23T11:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Dovid Goldberg", "start": "2026-10-23T11:30:00-04:00", "end": "2026-10-23T11:55:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "VMS-CCDB migration next steps", "start": "2026-10-23T11:30:00-04:00", "end": "2026-10-23T12:00:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "re: November 4 event", "start": "2026-10-23T12:30:00-04:00", "end": "2026-10-23T13:00:00-04:00", "allday": false, "location": "Zoom link below", "tentative": false}, {"title": "Elkanah / Yisroel", "start": "2026-10-23T13:00:00-04:00", "end": "2026-10-23T14:00:00-04:00", "allday": false, "location": "", "tentative": false}]}</script>
 <script type="application/json" id="liveData">{"drafts": {}, "added": [], "priority": {"921f092fde94": "high", "fb164eb22a57": "medium", "77e83b625f32": "medium", "47774a748502": "high", "a186cec347bf": "low", "393767bffb23": "medium", "a21414e263cd": "high", "5687f0f20a59": "high", "404d746d383c": "high", "ae86d12a45bb": "high", "a035eac2603a": "medium", "142155e65935": "medium", "183a142fadca": "medium", "02efeed17ccb": "medium", "80e1550845d5": "medium", "eb1cad9a92d6": "medium", "12c0551d9746": "medium", "b7ffc3cb65fa": "medium", "9240a0f1b5f1": "medium", "a6ec6a22e763": "medium", "982f7b596fa1": "low", "57e930b65a13": "medium", "797434564fa9": "medium", "fa082f40c067": "high", "ff201502eaeb": "low", "09576074d125": "medium", "bfd4ec070fc3": "medium", "090a310d7d4a": "medium", "58213e52ca43": "medium", "9d553eb1cdf7": "high", "c58ba4634699": "low", "4ed521019077": "medium", "9db801897256": "medium", "5d5aaaae583f": "medium", "7cad208c6386": "medium", "f5981e396352": "medium", "7ecc934a7e34": "low", "3b80607bf34c": "low", "8ead065b3739": "high", "3ef062a2fbdc": "low", "011d95dfb1df": "medium", "f9344210fc36": "medium", "9fc5fd7dcba9": "medium"}}</script>
 <section class="cat cat-todo" data-sec="todo"><h2>To-do <span class="badge">(11)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"><div class="card u-today" data-urg="today" data-pri="medium" data-key="393767bffb23" data-label="J8" data-title="Yossi Sternberg: Fabric for Michael" data-cat="To-do" data-src="" data-added="0">
 <div class="row"><label class="chk"><input type="checkbox" aria-label="Done"><span></span></label><span class="ttl"><span class="num">J8</span>Yossi Sternberg: Fabric for Michael<span class="ptag p-medium">Medium</span></span><span class="chev" aria-hidden="true"></span></div>
@@ -374,6 +397,7 @@ Sittie</div><button class="bmore" type="button" hidden>Show more</button></div><
 <div class="more"><div class="src-box"><div class="ireply"><textarea class="irtxt" rows="2" placeholder="Reply… (To-do drafts it for your OK)" aria-label="Reply" autocomplete="on" autocorrect="on" autocapitalize="sentences" spellcheck="true" inputmode="text" enterkeyhint="enter"></textarea><button class="btn irsend" type="button">Send</button></div><div class="cmenu"><button type="button" class="cbtn" data-a="act">Action</button><button type="button" class="cbtn" data-a="reply">Reply</button><button type="button" class="cbtn" data-a="draft">Draft reply</button><button type="button" class="cbtn" data-a="snooze">Snooze</button></div><div class="btns"><a class="srclink" href="https://wa.me/972503650243" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg><span>Open chat with Asi Spiegel</span></a></div></div></div></div></div></div><button class="snz-toggle" hidden></button><div class="snoozed" hidden></div></div></section>
 </div>
 <div class="col c2">
+<section class="cat psec psec-medium" data-psec="medium"><h2><span class="pdot"></span>Medium <span class="badge">(0)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"></div></div></div></section>
 <section class="cat cat-review" data-sec="review"><h2>Review <span class="badge">(9)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"><div class="card u-today" data-urg="today" data-pri="high" data-key="47774a748502" data-label="A9" data-title="Review Chana’s guest guide" data-cat="Review" data-src="https://wa.me/19177275564" data-added="0">
 <div class="row"><label class="chk"><input type="checkbox" aria-label="Done"><span></span></label><span class="ttl"><span class="num">A9</span>Review <a class="tlink" href="https://wa.me/19177275564" target="_blank" rel="noopener">Chana’s guest guide</a><span class="ptag p-high">High</span></span><a class="src" href="https://wa.me/19177275564" target="_blank" rel="noopener" aria-label="Open chat with Manager Home at the Ohel"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></a><span class="chev" aria-hidden="true"></span></div>
 <div class="face"><div class="expl">She finished a <a href="https://docs.google.com/document/d/1djNoVZlnbeBzGxsstLsaOd-eyeLZkTvl716V36LHIr0/edit?usp=sharing" target="_blank" rel="noopener">guest guide</a> and wants your edits and feedback.</div><div class="sline"><span class="unk">source unknown</span> Chana · WhatsApp · 1:58 PM ET</div></div>
@@ -627,6 +651,7 @@ Elkanah</div><button class="bmore" type="button" hidden>Show more</button></div>
 <section class="cat cat-ohel" data-sec="ohel"><h2>Home at the Ohel <span class="badge">(0)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"></div></div><button class="snz-toggle" hidden></button><div class="snoozed" hidden></div></div></section>
 </div>
 <div class="col c3">
+<section class="cat psec psec-low" data-psec="low"><h2><span class="pdot"></span>Low <span class="badge">(0)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"></div></div></div></section>
 <section class="cat cat-longterm" data-sec="longterm"><h2>Big Picture <span class="badge">(1)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"><div class="card u-week" data-urg="week" data-pri="medium" data-key="eb1cad9a92d6" data-label="C3" data-title="LT tech plan: Owners per area" data-cat="Big Picture" data-src="" data-added="0">
 <div class="row"><label class="chk"><input type="checkbox" aria-label="Done"><span></span></label><span class="ttl"><span class="num">C3</span>LT tech plan: Owners per area<span class="ptag p-medium">Medium</span></span><span class="chev" aria-hidden="true"></span></div>
 <div class="face"><div class="expl">Top priority: list what each tech area must deliver and who owns it, from the E/Y call Fri 1:04 PM (see the <a href="https://docs.google.com/document/d/1c31Z0rJHmSuXLrJ2M6tdp-pPWMW5PqqlK4LGVhtnSQI/edit" target="_blank" rel="noopener">Navigation doc</a>).</div><div class="sline">You · E/Y call · Fri 1:04 PM ET</div></div>
@@ -639,6 +664,8 @@ Elkanah</div><button class="bmore" type="button" hidden>Show more</button></div>
 <p class="foot">How this works: Sunny keeps this doc current. Each item is a checkbox: bold action, gray line with who · original time ET · source. Done items move to ARCHIVE (not deleted). Calendar events appear only in Today’s Calendar. Ohel items live in full in the Ohel Rental Inbox. All times ET.</p>
 </div>
 
+<button class="fab" id="fab" type="button" aria-label="Add task" title="Add task">+</button>
+<div class="atpop" id="atPop" hidden role="dialog" aria-label="Add task"><div class="addtask" id="addTask"><input id="atText" type="text" placeholder="+ Add task…" aria-label="New task" autocomplete="on" autocorrect="on" autocapitalize="sentences" spellcheck="true" inputmode="text" enterkeyhint="done"><select id="atCat" aria-label="Category"><option value="todo">To-do</option><option value="reply">Awaiting Reply</option><option value="review">Review</option><option value="fundraising">Fundraising</option><option value="waiting">Waiting on Others</option><option value="ohel">Home at the Ohel</option><option value="longterm">Big Picture</option></select><button class="btn" id="atAdd" type="button">Add</button></div></div>
 <div class="ov" id="ov"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true">
   <div class="grab"></div>
@@ -693,6 +720,7 @@ function load(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){ret
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var D=load(DK),Z=load(ZK),$=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 var cards=$$('.card:not(.static)');cards.forEach(function(c,i){c._i=i;c._home=c.parentNode;
+  if(c.dataset.cat){var ct=document.createElement('span');ct.className='ctag';ct.textContent=c.dataset.cat;var tt=c.querySelector('.ttl');if(tt)tt.appendChild(ct)}
   if(c.dataset.done&&!D[c.dataset.key])D[c.dataset.key]=Date.now()});  /* done on the ES Board / doc always wins */
 save(DK,D);
 /* ES 10/22 5:36 PM: "New" flag. A card is new if added (data-added, first build that listed it) after this device's last visit
@@ -712,10 +740,15 @@ function buzz(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}}
 function fmt(t){var d=new Date(t),n=new Date(),tm=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
   var dd=new Date(n);dd.setHours(0,0,0,0);var diff=Math.round((new Date(d).setHours(0,0,0,0)-dd)/864e5);
   return (diff===0?'today':diff===1?'tomorrow':d.toLocaleDateString([], {weekday:'short',month:'short',day:'numeric'}))+' '+tm}
-var CAP=9,SHOWALL=load('jem-showall-v1');
+var CAP=9,SHOWALL=load('jem-showall-v1'),VK='jem-view-v1',PVIEW=load(VK).v==='cat'?'cat':'pri';
+var CATORD={};$$('section[data-sec]').forEach(function(s,i){CATORD[s.dataset.sec]=i});
+function setView(v,init){PVIEW=v==='cat'?'cat':'pri';save(VK,{v:PVIEW});document.body.classList.toggle('pv',PVIEW==='pri');
+  $$('.vtog button').forEach(function(b){b.classList.toggle('on',b.dataset.view===PVIEW)});if(!init){render();try{renderPending()}catch(e){}}}
+document.body.classList.toggle('pv',PVIEW==='pri');
 function ymdET(t){return new Date(t).toLocaleDateString('en-CA',{timeZone:'America/New_York'})}
 function mdET(t){return new Date(t).toLocaleDateString('en-US',{timeZone:'America/New_York',weekday:'short',month:'numeric',day:'numeric'}).replace(',','')}
 function toArchive(key,html){var ul=$('#archList');if($('[data-ak="'+key+'"]',ul))return;var li=document.createElement('li');li.dataset.ak=key;li.innerHTML=html;ul.insertBefore(li,ul.firstChild);$('#archN').textContent=ul.children.length}
+var RU={today:0,week:1,later:2};
 function render(){
   var now=Date.now(),changed=false,today=ymdET(now),dl=$('#doneList');
   Object.keys(Z).forEach(function(k){if(Z[k]<=now){delete Z[k];changed=true}});if(changed)save(ZK,Z);
@@ -744,6 +777,11 @@ function render(){
     $('.badge',sec).textContent='('+total+')';
     tg.hidden=!snz.length;tg.textContent='Snoozed ('+snz.length+')';if(!snz.length)box.hidden=true;
   });
+  if(PVIEW==='pri'){var PS={};$$('.psec').forEach(function(s){PS[s.dataset.psec]=[]});
+    $$('section[data-sec]').forEach(function(sec){$$('.list .card:not(.static)',sec).forEach(function(c){if(c.hidden||D[c.dataset.key]||Z[c.dataset.key])return;c.classList.remove('cap');(PS[c.dataset.pri]||PS.medium).push([c,CATORD[sec.dataset.sec]])})});
+    Object.keys(PS).forEach(function(p){var ps=$('.psec[data-psec="'+p+'"]'),l=$('.list',ps);
+      PS[p].sort(function(a,b){return ((TOPNEW[b[0].dataset.key]||0)-(TOPNEW[a[0].dataset.key]||0))||(a[1]-b[1])||(RU[a[0].dataset.urg]-RU[b[0].dataset.urg])||(a[0]._i-b[0]._i)}).forEach(function(x){l.appendChild(x[0])});
+      $('.badge',ps).textContent='('+PS[p].length+')'})}
   var nd=$$('.card',dl).filter(function(c){return !c.hidden}).length;$('#doneN').textContent='('+nd+')';$('#doneEmpty').hidden=nd>0;
 }
 $$('.snz-toggle').forEach(function(b){b.addEventListener('click',function(){var box=b.nextElementSibling;box.hidden=!box.hidden})});
@@ -1057,7 +1095,7 @@ function setPend(a){save(PK,{items:a});renderPending()}
 function renderPending(){var items=pend(),ids={};items.forEach(function(it){ids[it.id]=1});
   $$('.card.pending').forEach(function(c){if(!ids[c.dataset.pid])c.remove()});
   items.forEach(function(it){var c=document.querySelector('.card.pending[data-pid="'+it.id+'"]');
-    var sec=document.querySelector('section[data-sec="'+it.cat+'"]')||document.querySelector('section[data-sec="todo"]'),list=sec&&$('.list',sec);if(!list)return;
+    var sec=PVIEW==='pri'?document.querySelector('.psec[data-psec="medium"]'):(document.querySelector('section[data-sec="'+it.cat+'"]')||document.querySelector('section[data-sec="todo"]')),list=sec&&$('.list',sec);if(!list)return;
     if(!c){c=document.createElement('div');c.className='card static pending';c.dataset.pid=it.id;list.insertBefore(c,list.firstChild)}
     else if(c.parentNode!==list||list.firstChild!==c)list.insertBefore(c,list.firstChild);
     var st=it.status==='sent'?'Pending · sent '+tET(it.at)+' · card appears after the next rebuild':it.status==='queued'?'Pending · queued, sends when connected (⚙)':'Pending · sending…';
@@ -1081,17 +1119,31 @@ function liveApply(st){if(!st)return;if(st.drafts)renderDrafts(st.drafts);
   setPend(pend().filter(function(it){return Date.now()-it.at<3*864e5}));})();
 /* ES 10/22 12:55 PM: Scan now -> action scan_now through the relay; the To-do webhook runs an on-demand sweep of those channels
    (always sent AND received). Not connected / failed: queued like every other action. */
-(function(){var box=$('#scanNow'),btn=$('#scanBtn'),st=$('#scanSt');if(!box)return;var SCK='jem-scan-ch-v1',s0=load(SCK);
+(function(){var box=$('#scanNow'),btn=$('#scanBtn'),go=$('#scanGo'),st=$('#scanSt');if(!btn)return;var SCK='jem-scan-ch-v1',s0=load(SCK),ht=null,held=false,stT=null;
+  /* ES 10/22 6:43 PM: click = scan all four; click-and-hold / long-press = choose channels, then Scan */
   $$('input',box).forEach(function(i){if(s0[i.value]===false)i.checked=false;i.addEventListener('change',function(){var m={};$$('input',box).forEach(function(j){m[j.value]=j.checked});save(SCK,m)})});
-  function say(t){st.hidden=false;st.textContent=t}
-  btn.addEventListener('click',function(){var ch=$$('input',box).filter(function(i){return i.checked}).map(function(i){return i.value});
-    if(!ch.length){toast('Tick at least one channel');return}
+  function say(t){st.hidden=false;st.textContent=t;clearTimeout(stT);stT=setTimeout(function(){st.hidden=true},8000)}
+  function scan(ch){if(!ch.length){toast('Tick at least one channel');return}
     var names={email:'Email',whatsapp:'WhatsApp',texts:'Texts',calls:'Calls'},txt='Scan now: '+ch.map(function(c){return names[c]}).join(', ')+' (sent and received)';
     var p={type:'action',action:'scan_now',channels:ch,directions:['sent','received'],scan_id:'s'+rid(),text:txt,title:txt,key:null,label:null,category:'',source_url:null,sent_at:et(Date.now())};
-    buzz([12,40,12]);btn.disabled=true;setTimeout(function(){btn.disabled=false},4000);
-    if(!connected()){var q=queue();q.push(p);setQueue(q);say('Queued '+tET(Date.now())+' · sends when connected (⚙)');toast('Scan queued (connect ⚙)');return}
-    say('Sending…');post(p).then(function(r){if(r.ok){say('Scan requested '+tET(Date.now())+' · new items show after the sweep rebuilds the page');toast('Scan requested')}
-      else{var q=queue();q.push(p);setQueue(q);say('Not sent ('+r.error.split(' · ')[0]+') · queued');toast('Scan not sent · queued')}})})})();
+    buzz([12,40,12]);box.hidden=true;
+    if(!connected()){var q=queue();q.push(p);setQueue(q);say('Scan queued '+tET(Date.now())+' · sends when connected (⚙)');toast('Scan queued (connect ⚙)');return}
+    say('Sending scan…');post(p).then(function(r){if(r.ok){say('Scan requested '+tET(Date.now()));toast('Scan requested: '+ch.map(function(c){return names[c]}).join(', '))}
+      else{var q=queue();q.push(p);setQueue(q);say('Scan not sent · queued');toast('Scan not sent · queued')}})}
+  btn.addEventListener('pointerdown',function(e){if(e.button>0)return;held=false;btn.classList.add('press');ht=setTimeout(function(){ht=null;held=true;btn.classList.remove('press');buzz(25);box.hidden=false},500)});
+  ['pointerup','pointercancel','pointerleave'].forEach(function(ev){btn.addEventListener(ev,function(){clearTimeout(ht);ht=null;btn.classList.remove('press')})});
+  btn.addEventListener('contextmenu',function(e){e.preventDefault();held=true;box.hidden=false});
+  btn.addEventListener('click',function(e){if(held){held=false;return}if(!box.hidden){box.hidden=true;return}scan(['email','whatsapp','texts','calls'])});
+  go.addEventListener('click',function(){scan($$('input',box).filter(function(i){return i.checked}).map(function(i){return i.value}))});
+  document.addEventListener('pointerdown',function(e){if(!box.hidden&&!e.target.closest('#scanNow,#scanBtn'))box.hidden=true});})();
+/* + Add task FAB (ES 10/22 6:43 PM): opens the add-task box; the add_task send itself is unchanged */
+(function(){var f=$('#fab'),pp=$('#atPop');if(!f)return;function tog(on){pp.hidden=!on;f.classList.toggle('on',on);f.setAttribute('aria-expanded',on);if(on)setTimeout(function(){$('#atText').focus()},30)}
+  f.addEventListener('click',function(){tog(pp.hidden)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pp.hidden)tog(false)});
+  document.addEventListener('pointerdown',function(e){if(!pp.hidden&&!e.target.closest('#atPop,#fab'))tog(false)});
+  $('#atAdd').addEventListener('click',function(){setTimeout(function(){if(!$('#atText').value)tog(false)},0)});
+  $('#atText').addEventListener('keydown',function(e){if(e.key==='Enter')setTimeout(function(){if(!$('#atText').value)tog(false)},0)});})();
+/* View toggle (ES 10/22 6:43 PM): By priority (default) = High / Medium / Low sections across categories; By category = the old layout */
+(function(){$$('.vtog button').forEach(function(b){b.addEventListener('click',function(){setView(b.dataset.view)})});setView(PVIEW,true)})();
 /* Archive in two views (ES 10/22 9:30 AM): Cards = same card as on the page, by day cleared; Detailed = the archive lines */
 (function(){var a=$('#archive');if(!a)return;var AVK='jem-archview-v1',v=load(AVK).v||'cards';
   function setV(x){v=x;$$('.aview button',a).forEach(function(b){b.classList.toggle('on',b.dataset.av===x)});$('#archCards').hidden=x!=='cards';$('#archList').hidden=x!=='detail';save(AVK,{v:x})}
