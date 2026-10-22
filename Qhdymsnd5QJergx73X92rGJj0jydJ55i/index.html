@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 9:41 PM">
+<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Wed Oct 21, 9:56 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Wed Oct 21</title>
@@ -194,7 +194,7 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 9:41 PM ET</div>
+<header><h1>Today · Wed Oct 21</h1><div class="upd">Updated Wed Oct 21, 9:56 PM ET</div>
 <button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 </header>
 <div class="cols">
@@ -1199,7 +1199,8 @@ setInterval(checkUpd,60000);window.addEventListener('focus',checkUpd);setTimeout
 window.addEventListener('pagehide',saveAllDrafts);
 /* live ticks: poll state.json and apply done keys in place (no reload, typing untouched) */
 function pollState(){if(!/^https?:/.test(location.protocol))return;fetch('state.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(st){
-  if(!st||!st.done)return;var ch=false;st.done.forEach(function(k){if(!D[k]){D[k]=Date.now();ch=true}});if(!ch)return;save(DK,D);
+  if(!st)return;var ch=false;(st.done||[]).forEach(function(k){if(!D[k]){D[k]=Date.now();ch=true}});if(ch)save(DK,D);
+  var zs=st.snoozed||{},zc=false;Object.keys(zs).forEach(function(k){if(zs[k]>Date.now()&&Z[k]!==zs[k]){Z[k]=zs[k];zc=true}});if(zc)save(ZK,Z);if(!ch&&!zc)return;
   var a=document.activeElement,keep=a&&a.tagName==='TEXTAREA'?[a,a.selectionStart,a.selectionEnd]:null;render();if(keep&&document.activeElement!==keep[0]){keep[0].focus();try{keep[0].setSelectionRange(keep[1],keep[2])}catch(e){}}}).catch(function(){})}
 setInterval(pollState,60000);setTimeout(pollState,3000);window.addEventListener('focus',pollState);document.addEventListener('visibilitychange',function(){if(!document.hidden)pollState()});document.addEventListener('visibilitychange',function(){if(!document.hidden)renderCal()});
 
