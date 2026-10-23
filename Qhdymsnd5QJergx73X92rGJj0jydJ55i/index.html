@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Fri Oct 23, 1:09 AM">
+<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Fri Oct 23, 1:17 AM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Fri Oct 23</title>
@@ -33,11 +33,15 @@ header{padding:8px 4px 16px;position:relative}
 .conn{font-size:12px;color:var(--gray);margin-top:2px}
 h1{margin:0;font-size:26px;font-weight:700;color:var(--navy);letter-spacing:-.01em}
 .upd{margin-top:2px;font-size:13px;color:var(--gray)}
-.caltog{display:flex;align-items:center;gap:8px;width:100%;background:none;border:0;padding:2px 4px 8px;font:700 12px/1.2 inherit;font-family:inherit;letter-spacing:.09em;text-transform:uppercase;color:var(--gray);cursor:pointer;text-align:left}
-.caltog .ct-a{margin-left:auto;font-size:11.5px;letter-spacing:.02em;text-transform:none;font-weight:600;color:var(--navy);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px}
-body.calhide .cal{display:none}body.calhide .caltog{width:auto;margin:0 0 12px;padding:0}body.calhide .caltog .ct-l{display:none}
-body.calhide .caltog .ct-a{margin-left:0}
-.cols .caltog{order:0}
+.calbox{background:var(--navy);color:#fff;border-radius:16px;padding:8px 12px 10px 16px;margin:0 0 28px;order:0}
+.calhd{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;opacity:.95}
+.calarr{margin-left:auto;width:32px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.calarr:hover{background:rgba(255,255,255,.22)}
+.calbox .cal{background:none;border-radius:0;padding:0;margin:4px 0 0}
+.calbox.collapsed .cal{display:flex;gap:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.calbox.collapsed .cal li{flex:0 0 auto;border-top:0;padding:4px 0;gap:6px}
+.calbox.collapsed .cal .t{min-width:0}.calbox.collapsed .cal li.past{display:none}
+.calbox.collapsed .cal li.calsub{padding:4px 0;align-self:center}
 .cal{background:var(--navy);color:#fff;border-radius:16px;padding:12px 16px;margin:0 0 28px;list-style:none}
 .cal li{display:flex;gap:12px;padding:6px 0;font-size:14px}
 .cal li+li{border-top:1px solid rgba(255,255,255,.14)}
@@ -259,7 +263,7 @@ body.pv .ctag{display:inline}body.pv section[data-sec]{display:none}body:not(.pv
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Fri Oct 23</h1><div class="upd">Updated Fri Oct 23, 1:09 AM ET</div>
+<header><h1>Today · Fri Oct 23</h1><div class="upd">Updated Fri Oct 23, 1:17 AM ET</div>
 <button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 <button class="scanb" id="scanBtn" type="button" title="Scan now (hold to choose channels)" aria-label="Scan now">⟳ Scan</button>
 <div class="scandd" id="scanNow" hidden role="group" aria-label="Scan channels"><label><input type="checkbox" value="email" checked>Email</label><label><input type="checkbox" value="whatsapp" checked>WhatsApp</label><label><input type="checkbox" value="texts" checked>Texts</label><label><input type="checkbox" value="calls" checked>Calls</label><button class="btn" id="scanGo" type="button">Scan</button></div>
@@ -268,8 +272,8 @@ body.pv .ctag{display:inline}body.pv section[data-sec]{display:none}body:not(.pv
 </header>
 <div class="cols">
 <div class="col c1">
-<button class="caltog" id="calTog" type="button" aria-controls="cal" aria-expanded="true"><span class="ct-l">Schedule</span><span class="ct-a">Hide ▴</span></button>
-<ul class="cal" id="cal"><li><span class="t">10:30–11 AM</span><span class="d">Shmuel Peles</span></li><li><span class="t">11–11:20 AM</span><span class="d">Daily Huddle [Tentative]</span></li><li><span class="t">11:30–11:55 AM</span><span class="d">Dovid Goldberg</span></li><li><span class="t">11:30 AM–12 PM</span><span class="d">VMS-CCDB migration next steps</span></li><li><span class="t">12:30–1 PM</span><span class="d">re: November 4 event</span></li><li><span class="t">1–2 PM</span><span class="d">Elkanah / Yisroel</span></li></ul>
+<div class="calbox" id="calBox"><div class="calhd"><span>Schedule</span><button class="calarr" id="calTog" type="button" aria-controls="cal" aria-expanded="true" title="Collapse schedule to one row">▴</button></div>
+<ul class="cal" id="cal"><li><span class="t">10:30–11 AM</span><span class="d">Shmuel Peles</span></li><li><span class="t">11–11:20 AM</span><span class="d">Daily Huddle [Tentative]</span></li><li><span class="t">11:30–11:55 AM</span><span class="d">Dovid Goldberg</span></li><li><span class="t">11:30 AM–12 PM</span><span class="d">VMS-CCDB migration next steps</span></li><li><span class="t">12:30–1 PM</span><span class="d">re: November 4 event</span></li><li><span class="t">1–2 PM</span><span class="d">Elkanah / Yisroel</span></li></ul></div>
 <section class="cat psec psec-high" data-psec="high"><h2><span class="pdot"></span>High <span class="badge">(0)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"></div></div></div></section>
 <script type="application/json" id="calData">{"calendar": "es@jemedia.org (primary)", "fetched_at": "2026-10-23T01:09:31-04:00", "window": "2026-10-23T00:00:00/2026-10-26T00:00:00", "events": [{"title": "Shmuel Peles", "start": "2026-10-23T10:30:00-04:00", "end": "2026-10-23T11:00:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Daily Huddle [Tentative]", "start": "2026-10-23T11:00:00-04:00", "end": "2026-10-23T11:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Dovid Goldberg", "start": "2026-10-23T11:30:00-04:00", "end": "2026-10-23T11:55:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "VMS-CCDB migration next steps", "start": "2026-10-23T11:30:00-04:00", "end": "2026-10-23T12:00:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "re: November 4 event", "start": "2026-10-23T12:30:00-04:00", "end": "2026-10-23T13:00:00-04:00", "allday": false, "location": "Zoom link below", "tentative": false}, {"title": "Elkanah / Yisroel", "start": "2026-10-23T13:00:00-04:00", "end": "2026-10-23T14:00:00-04:00", "allday": false, "location": "", "tentative": false}]}</script>
 <script type="application/json" id="liveData">{"drafts": {}, "added": [], "priority": {"921f092fde94": "high", "fb164eb22a57": "medium", "77e83b625f32": "medium", "47774a748502": "high", "a186cec347bf": "low", "393767bffb23": "medium", "a21414e263cd": "high", "5687f0f20a59": "high", "404d746d383c": "high", "759a49ce374d": "medium", "a035eac2603a": "medium", "142155e65935": "medium", "183a142fadca": "medium", "02efeed17ccb": "medium", "80e1550845d5": "medium", "eb1cad9a92d6": "medium", "12c0551d9746": "medium", "b7ffc3cb65fa": "medium", "9240a0f1b5f1": "medium", "a6ec6a22e763": "medium", "982f7b596fa1": "low", "57e930b65a13": "medium", "797434564fa9": "medium", "fa082f40c067": "high", "ff201502eaeb": "low", "09576074d125": "medium", "bfd4ec070fc3": "medium", "090a310d7d4a": "medium", "58213e52ca43": "medium", "c58ba4634699": "low", "4ed521019077": "medium", "9db801897256": "medium", "5d5aaaae583f": "medium", "7cad208c6386": "medium", "f5981e396352": "medium", "fc2e19a8c578": "medium", "8651f8e07982": "medium", "47bf1bdb84c8": "medium", "33f85a36df86": "medium", "d483123ebba2": "medium", "268dadd08986": "low", "12e585b4a42c": "medium", "7ecc934a7e34": "low", "3b80607bf34c": "low", "8ead065b3739": "high", "011d95dfb1df": "medium", "f9344210fc36": "medium", "dde57b2baa16": "medium"}}</script>
@@ -796,10 +800,12 @@ var CATORD={};$$('section[data-sec]').forEach(function(s,i){CATORD[s.dataset.sec
 function setView(v,init){PVIEW=v==='cat'?'cat':'pri';save(VK,{v:PVIEW});document.body.classList.toggle('pv',PVIEW==='pri');
   $$('.vtog button').forEach(function(b){b.classList.toggle('on',b.dataset.view===PVIEW)});if(!init){var fa=document.activeElement;cards.forEach(function(c){if(c.classList.contains('open')&&!(fa&&c.contains(fa)&&/TEXTAREA|INPUT/.test(fa.tagName)&&fa.value))c.classList.remove('open')});render();try{renderPending()}catch(e){}}}
 document.body.classList.toggle('pv',PVIEW==='pri');
-/* Collapsible calendar (ES 10/22 7:26 PM): hide the schedule so the task cards take its space; jem-cal-v1 {hide:true} per device */
-(function(){var CLK='jem-cal-v1',b=document.getElementById('calTog');if(!b)return;
-  function set(h,init){document.body.classList.toggle('calhide',h);b.setAttribute('aria-expanded',!h);b.querySelector('.ct-a').textContent=h?'📅 Show schedule':'Hide ▴';b.title=h?'Show the schedule':'Hide the schedule';if(!init)save(CLK,{hide:h})}
-  set(!!load(CLK).hide,true);b.addEventListener('click',function(){set(!document.body.classList.contains('calhide'))})})();
+/* Collapsible calendar (ES 10/23 1:15 AM): ▴/▾ at the schedule's top right collapses it to ONE row (never hidden). jem-cal-v1 {collapsed:true};
+   an old {hide:true} counts as collapsed; anything else unknown = expanded. */
+(function(){var CLK='jem-cal-v1',b=document.getElementById('calTog'),box=document.getElementById('calBox');if(!b||!box)return;
+  var v=load(CLK),c0=!!(v&&typeof v==='object'&&(v.collapsed===true||v.hide===true));document.body.classList.remove('calhide');
+  function set(c,init){box.classList.toggle('collapsed',c);b.textContent=c?'▾':'▴';b.setAttribute('aria-expanded',!c);b.title=c?'Expand schedule':'Collapse schedule to one row';if(!init)save(CLK,{collapsed:c})}
+  set(c0,true);if(v&&v.hide!==undefined)save(CLK,{collapsed:c0});b.addEventListener('click',function(){set(!box.classList.contains('collapsed'))})})();
 function ymdET(t){return new Date(t).toLocaleDateString('en-CA',{timeZone:'America/New_York'})}
 function mdET(t){return new Date(t).toLocaleDateString('en-US',{timeZone:'America/New_York',weekday:'short',month:'numeric',day:'numeric'}).replace(',','')}
 function toArchive(key,html){var ul=$('#archList');if($('[data-ak="'+key+'"]',ul))return;var li=document.createElement('li');li.dataset.ak=key;li.innerHTML=html;ul.insertBefore(li,ul.firstChild);$('#archN').textContent=ul.children.length}
