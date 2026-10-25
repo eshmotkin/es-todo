@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Sun Oct 25, 5:07 PM">
+<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Sun Oct 25, 5:11 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Sun Oct 25</title>
@@ -183,6 +183,10 @@ details li .amt{color:var(--gray)}
 .custom{display:flex;gap:8px;margin-top:10px}
 .custom input,.custom select{font:500 15px inherit;font-family:inherit;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;color:var(--ink);min-width:0}
 .custom input{width:80px}.custom select{flex:1}
+.useg{display:flex;flex:1;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.useg .ub{flex:1;border:0;background:#fff;color:var(--ink);font:600 15px inherit;font-family:inherit;padding:10px 6px;cursor:pointer}
+.useg .ub+.ub{border-left:1px solid var(--line)}
+.useg .ub.on{background:var(--navy);color:#fff}
 .btn{background:var(--navy);color:#fff;border:0;border-radius:12px;padding:11px 16px;font:600 15px/1 inherit;font-family:inherit;cursor:pointer}
 textarea{display:block;width:100%;min-height:96px;border:1px solid var(--line);border-radius:12px;padding:12px;font:15px/1.4 inherit;font-family:inherit;color:var(--ink);resize:vertical;-webkit-user-select:text;user-select:text}
 textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--tint);border-color:var(--navy)}
@@ -271,7 +275,7 @@ body.pv .ctag{display:inline}body.pv section[data-sec]{display:none}body:not(.pv
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Sun Oct 25</h1><div class="upd">Updated Sun Oct 25, 5:07 PM ET</div>
+<header><h1>Today · Sun Oct 25</h1><div class="upd">Updated Sun Oct 25, 5:11 PM ET</div>
 <button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 <button class="scanb" id="scanBtn" type="button" title="Scan now (hold to choose channels)" aria-label="Scan now">⟳ Scan</button>
 <div class="scandd" id="scanNow" hidden role="group" aria-label="Scan channels"><label><input type="checkbox" value="email" checked>Email</label><label><input type="checkbox" value="whatsapp" checked>WhatsApp</label><label><input type="checkbox" value="texts" checked>Texts</label><label><input type="checkbox" value="calls" checked>Calls</label><button class="btn" id="scanGo" type="button">Scan</button></div>
@@ -283,7 +287,7 @@ body.pv .ctag{display:inline}body.pv section[data-sec]{display:none}body:not(.pv
 <div class="calbox" id="calBox"><div class="calhd"><span>Schedule</span><span class="calmore" id="calMore"></span><button class="calarr" id="calTog" type="button" aria-controls="cal" aria-expanded="true" title="Collapse schedule to one row">▴</button></div>
 <ul class="cal" id="cal"><li><span class="d">No more events today</span></li></ul></div>
 <section class="cat psec psec-high" data-psec="high"><h2><span class="pdot"></span>High <span class="badge">(0)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"></div></div></div></section>
-<script type="application/json" id="calData">{"calendar": "es@jemedia.org (primary)", "fetched_at": "2026-10-25T16:13:53-04:00", "window": "2026-10-25T00:00:00/2026-10-28T00:00:00", "events": [{"title": "Elkanah/Mendel (tentative)", "start": "2026-10-25T12:45:00-04:00", "end": "2026-10-25T13:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "JEM-Shmuel", "start": "2026-10-25T15:00:00-04:00", "end": "2026-10-25T16:15:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Oslo - Alma Ata", "start": "2026-10-26", "end": "2026-11-01", "allday": true, "location": "", "tentative": false}, {"title": "Lazar in Israel", "start": "2026-10-26", "end": "2026-10-27", "allday": true, "location": "", "tentative": false}, {"title": "Drive to Newark (EWR) for SAS 908", "start": "2026-10-26T16:00:00-04:00", "end": "2026-10-26T17:30:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "SAS 908 - EWR to OSL (Elkanah Shmotkin & Yosef Sternberg)", "start": "2026-10-26T19:30:00-04:00", "end": "2026-10-27T03:05:00-04:00", "allday": false, "location": "Newark Liberty International Airport (EWR), Terminal B", "tentative": false}, {"title": "Wilhelm wedding Oslo", "start": "2026-10-27", "end": "2026-10-28", "allday": true, "location": "", "tentative": false}]}</script>
+<script type="application/json" id="calData">{"calendar": "es@jemedia.org (primary)", "fetched_at": "2026-10-25T17:11:18-04:00", "window": "2026-10-25T00:00:00/2026-10-28T00:00:00", "events": [{"title": "Elkanah/Mendel (tentative)", "start": "2026-10-25T12:45:00-04:00", "end": "2026-10-25T13:20:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "JEM-Shmuel", "start": "2026-10-25T15:00:00-04:00", "end": "2026-10-25T16:15:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "Oslo - Alma Ata", "start": "2026-10-26", "end": "2026-11-01", "allday": true, "location": "", "tentative": false}, {"title": "Lazar in Israel", "start": "2026-10-26", "end": "2026-10-27", "allday": true, "location": "", "tentative": false}, {"title": "Drive to Newark (EWR) for SAS 908", "start": "2026-10-26T16:00:00-04:00", "end": "2026-10-26T17:30:00-04:00", "allday": false, "location": "", "tentative": false}, {"title": "SAS 908 - EWR to OSL (Elkanah Shmotkin & Yosef Sternberg)", "start": "2026-10-26T19:30:00-04:00", "end": "2026-10-27T03:05:00-04:00", "allday": false, "location": "Newark Liberty International Airport (EWR), Terminal B", "tentative": false}, {"title": "Wilhelm wedding Oslo", "start": "2026-10-27", "end": "2026-10-28", "allday": true, "location": "", "tentative": false}]}</script>
 <script type="application/json" id="liveData">{"drafts": {}, "added": [], "priority": {"921f092fde94": "high", "fb164eb22a57": "medium", "77e83b625f32": "medium", "47774a748502": "high", "a186cec347bf": "low", "393767bffb23": "medium", "a21414e263cd": "high", "5687f0f20a59": "high", "1e194cacad33": "high", "52f334165048": "medium", "a678b34c09d4": "medium", "3eb2c08b5b17": "medium", "21e24ca0732d": "medium", "57633baa3c68": "medium", "aa9f1c861498": "medium", "8cdfce5da3f0": "medium", "006e13141175": "medium", "0a046cb86bb8": "medium", "f87924ed0657": "low", "6b3b2b353cef": "low", "02fdfa03476a": "medium", "6fc88d21e8d2": "medium", "cfd814fbb132": "medium", "33cf31f57344": "medium", "d510e7031c9b": "medium", "e6651273a108": "medium", "a035eac2603a": "medium", "142155e65935": "medium", "183a142fadca": "medium", "02efeed17ccb": "medium", "80e1550845d5": "medium", "eb1cad9a92d6": "medium", "12c0551d9746": "medium", "b7ffc3cb65fa": "medium", "9240a0f1b5f1": "medium", "a6ec6a22e763": "medium", "982f7b596fa1": "low", "57e930b65a13": "medium", "797434564fa9": "medium", "fa082f40c067": "high", "ff201502eaeb": "low", "09576074d125": "medium", "090a310d7d4a": "medium", "4ed521019077": "medium", "9db801897256": "medium", "5d5aaaae583f": "medium", "7cad208c6386": "medium", "8651f8e07982": "medium", "33f85a36df86": "medium", "d483123ebba2": "medium", "bcf53f89e760": "medium", "268dadd08986": "low", "d591778293b7": "medium", "3fd2c9a52901": "medium", "5759f3554d79": "medium", "74e8704fce60": "medium", "be8be4f685eb": "medium", "3b80607bf34c": "low", "8ead065b3739": "high", "f9344210fc36": "medium", "3defce603284": "medium", "4e72b9cd3301": "low", "f0feac7f0bb9": "low", "4a994a97d27a": "medium", "afc6dd1d2414": "medium", "d45a69af71a6": "medium", "8f09c6b7d055": "high"}}</script>
 <section class="cat cat-todo" data-sec="todo"><h2>To-do <span class="badge">(19)</span></h2><div class="catpanel"><div class="sub sub-plain"><div class="list"><div class="card u-today" data-urg="today" data-pri="high" data-key="1e194cacad33" data-label="W2" data-title="Before leaving for Oslo (by Mon Oct 26, 7:30…" data-cat="To-do" data-src="" data-added="1792900083621">
 <div class="row"><label class="chk"><input type="checkbox" aria-label="Done"><span></span></label><span class="ttl"><span class="num">W2</span>Before leaving for Oslo (by Mon Oct 26, 7:30…<span class="ptag p-high">High</span></span><span class="chev" aria-hidden="true"></span></div>
@@ -796,7 +800,7 @@ Elkanah</div><button class="bmore" type="button" hidden>Show more</button></div>
       <button class="chip" data-z="2d">2 days<small></small></button>
       <button class="chip" data-z="1w">1 week<small></small></button>
     </div>
-    <div class="custom"><input id="zN" type="number" min="1" inputmode="numeric" placeholder="#" aria-label="Amount"><select id="zU" aria-label="Unit"><option value="h">hours</option><option value="d">days</option></select><button class="btn" id="zSet">Snooze</button></div>
+    <div class="custom"><input id="zN" type="number" min="1" inputmode="numeric" placeholder="#" aria-label="Amount"><input type="hidden" id="zU" value="d"><div class="useg" role="group" aria-label="Unit"><button type="button" class="ub on" data-u="d" aria-pressed="true">Days</button><button type="button" class="ub" data-u="h" aria-pressed="false">Hours</button></div><button class="btn" id="zSet">Snooze</button></div>
   </div>
   <div class="view" data-v="text">
     <div class="vt"><button class="back" aria-label="Back">‹</button><span id="txtTitle"></span></div>
@@ -1278,6 +1282,7 @@ render();setInterval(render,60000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)render()});
 })();
 
+var Q$=function(q,r){return [].slice.call((r||document).querySelectorAll(q))};
 /* ES 10/25 5:06 PM: list-like item text renders as real lists (rendering only; content untouched) */
 function splitTop(h,sep){var out=[],d=0,tag=0,cur='';for(var i=0;i<h.length;i++){var ch=h[i];if(ch==='<')tag=1;else if(ch==='>')tag=0;else if(!tag){if(ch==='('||ch==='[')d++;else if((ch===')'||ch===']')&&d>0)d--}
   if(!tag&&!d&&h.substr(i,sep.length)===sep){out.push(cur);cur='';i+=sep.length-1;continue}cur+=ch}out.push(cur);return out}
@@ -1296,7 +1301,8 @@ function listify(h){if(!h||/class="x[lhp]"/.test(h))return h;
   var head='',m=parts[0].match(/^([^<:]{2,60}):\s+(.*)$/);if(m){head=m[1];parts[0]=m[2]}
   var last=parts.length-1;parts[last]=parts[last].replace(/\.\s*$/,'');
   return (head?'<div class="xh">'+head+':</div>':'')+'<ul class="xl">'+parts.map(function(x){return '<li>'+x.charAt(0).toUpperCase()+x.slice(1)+'</li>'}).join('')+'</ul>'}
-function listifyAll(root){$$('.expl',root||document).forEach(function(x){var h=x.innerHTML,n=listify(h);if(n!==h)x.innerHTML=n})}
+function listifyAll(root){Q$('.expl',root||document).forEach(function(x){var h=x.innerHTML,n=listify(h);if(n!==h)x.innerHTML=n})}
 listifyAll();
+Q$('.useg .ub').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById('zU').value=b.dataset.u;Q$('.useg .ub').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)})})});
 </script>
 </body></html>
