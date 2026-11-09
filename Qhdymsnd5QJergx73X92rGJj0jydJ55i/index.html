@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Mon Nov 9, 4:39 PM">
+<html lang="en"><head><meta http-equiv="Cache-Control" content="no-cache, no-store"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="build" content="Mon Nov 9, 4:45 PM">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F3A5F">
 <title>Today · Mon Nov 9</title>
@@ -250,6 +250,10 @@ textarea:focus,.custom input:focus,.custom select:focus{outline:2px solid var(--
 .fab.on{transform:rotate(45deg)}
 .atpop{position:fixed;right:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:min(380px,calc(100vw - 36px));background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(17,24,39,.22);padding:12px;z-index:9}
 .atpop .addtask{margin:0}
+.atpri{display:flex;gap:6px;margin:8px 0 0;width:100%}
+.atpri .pi{flex:1;justify-content:center;padding:9px 6px;margin:0;font-size:13.5px;border:1px solid var(--line);background:#fff}
+.atpri .pi .dot{width:9px;height:9px}
+.atpri .pi.on{border-color:var(--navy);background:var(--tint);font-weight:700}
 .scanb{position:absolute;right:2px;top:50px;height:30px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--navy);font:600 12.5px/1 inherit;font-family:inherit;cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:manipulation}
 .scanb.press{background:var(--tint)}
 .scandd{position:absolute;right:2px;top:86px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(17,24,39,.18);padding:10px 12px;z-index:12;display:flex;flex-direction:column;gap:8px;font-size:14px;min-width:170px}
@@ -275,7 +279,7 @@ body.pv .ctag{display:inline}body.pv section[data-sec]{display:none}body:not(.pv
 #updnote{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
 </style></head>
 <body><div class="wrap">
-<header><h1>Today · Mon Nov 9</h1><div class="upd">Updated Mon Nov 9, 4:39 PM ET</div>
+<header><h1>Today · Mon Nov 9</h1><div class="upd">Updated Mon Nov 9, 4:45 PM ET</div>
 <button class="gear" id="gear" aria-label="Connect" title="Connect"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="dot"></span></button>
 <button class="scanb" id="scanBtn" type="button" title="Scan now (hold to choose channels)" aria-label="Scan now">⟳ Scan</button>
 <div class="scandd" id="scanNow" hidden role="group" aria-label="Scan channels"><label><input type="checkbox" value="email" checked>Email</label><label><input type="checkbox" value="whatsapp" checked>WhatsApp</label><label><input type="checkbox" value="texts" checked>Texts</label><label><input type="checkbox" value="calls" checked>Calls</label><button class="btn" id="scanGo" type="button">Scan</button></div>
@@ -1445,7 +1449,7 @@ SM Lead - Sample Work</div><button class="bmore" type="button" hidden>Show more<
 </div>
 
 <button class="fab" id="fab" type="button" aria-label="Add task" title="Add task">+</button>
-<div class="atpop" id="atPop" hidden role="dialog" aria-label="Add task"><div class="addtask" id="addTask"><input id="atText" type="text" placeholder="+ Add task…" aria-label="New task" autocomplete="on" autocorrect="on" autocapitalize="sentences" spellcheck="true" inputmode="text" enterkeyhint="done"><select id="atCat" aria-label="Category"><option value="todo">To-do</option><option value="reply">Awaiting Reply</option><option value="review">Review</option><option value="fundraising">Fundraising</option><option value="waiting">Waiting on Others</option><option value="ohel">Home at the Ohel</option><option value="longterm">Big Picture</option></select><button class="btn" id="atAdd" type="button">Add</button></div></div>
+<div class="atpop" id="atPop" hidden role="dialog" aria-label="Add task"><div class="addtask" id="addTask"><input id="atText" type="text" placeholder="+ Add task…" aria-label="New task" autocomplete="on" autocorrect="on" autocapitalize="sentences" spellcheck="true" inputmode="text" enterkeyhint="done"><select id="atCat" aria-label="Category"><option value="todo">To-do</option><option value="reply">Awaiting Reply</option><option value="review">Review</option><option value="fundraising">Fundraising</option><option value="waiting">Waiting on Others</option><option value="ohel">Home at the Ohel</option><option value="longterm">Big Picture</option></select><button class="btn" id="atAdd" type="button">Add</button><div class="atpri" id="atPri" role="group" aria-label="Priority"><button type="button" class="pi" data-p="high"><span class="dot"></span>High</button><button type="button" class="pi on" data-p="medium"><span class="dot"></span>Medium</button><button type="button" class="pi" data-p="low"><span class="dot"></span>Low</button></div></div></div>
 <div class="ov" id="ov"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true">
   <div class="grab"></div>
@@ -1892,22 +1896,27 @@ function setPend(a){save(PK,{items:a});renderPending()}
 function renderPending(){var items=pend(),ids={};items.forEach(function(it){ids[it.id]=1});
   $$('.card.pending').forEach(function(c){if(!ids[c.dataset.pid])c.remove()});
   items.forEach(function(it){var c=document.querySelector('.card.pending[data-pid="'+it.id+'"]');
-    var sec=PVIEW==='pri'?document.querySelector('.psec[data-psec="medium"]'):(document.querySelector('section[data-sec="'+it.cat+'"]')||document.querySelector('section[data-sec="todo"]')),list=sec&&$('.list',sec);if(!list)return;
-    if(!c){c=document.createElement('div');c.className='card static pending';c.dataset.pid=it.id;list.insertBefore(c,list.firstChild)}
-    else if(c.parentNode!==list||list.firstChild!==c)list.insertBefore(c,list.firstChild);
+    var pri=(PR[it.pri]!=null?it.pri:'medium');
+    var sec=PVIEW==='pri'?document.querySelector('.psec[data-psec="'+pri+'"]'):(document.querySelector('section[data-sec="'+it.cat+'"]')||document.querySelector('section[data-sec="todo"]')),list=sec&&$('.list',sec);if(!list)return;
+    if(!c){c=document.createElement('div');c.className='card static pending';c.dataset.pid=it.id;c.dataset.pri=pri;list.insertBefore(c,list.firstChild)}
+    else{c.dataset.pri=pri;if(c.parentNode!==list||list.firstChild!==c)list.insertBefore(c,list.firstChild)}
     var st=it.status==='sent'?'Pending · sent '+tET(it.at)+' · card appears after the next rebuild':it.status==='queued'?'Pending · queued, sends when connected (⚙)':'Pending · sending…';
-    c.innerHTML='<div class="row"><span class="ttl"><span class="num">new</span>'+esc(it.text)+'<span class="pend">'+esc(st)+'</span></span></div>';
+    c.innerHTML='<div class="row"><span class="ttl"><span class="num">new</span>'+esc(it.text)+'<span class="ptag p-'+pri+'">'+pri.charAt(0).toUpperCase()+pri.slice(1)+'</span><span class="pend">'+esc(st)+'</span></span></div>';
     if(list.parentNode.hidden)list.parentNode.hidden=false})}
 function liveApply(st){if(!st)return;if(st.drafts)renderDrafts(st.drafts);
   if(Array.isArray(st.added)){var a={};st.added.forEach(function(i){a[i]=1});var items=pend(),left=items.filter(function(it){return !a[it.id]});if(left.length!==items.length)setPend(left)}}
-(function(){var inp=$('#atText'),sel=$('#atCat'),btn=$('#atAdd');if(!inp)return;
+(function(){var inp=$('#atText'),sel=$('#atCat'),btn=$('#atAdd'),box=$('#atPri');if(!inp)return;
   var s0=load(ATK);if(s0.text&&!inp.value)inp.value=s0.text;if(s0.cat)sel.value=s0.cat;
-  function keep(){save(ATK,{text:inp.value,cat:sel.value})}inp.addEventListener('input',keep);sel.addEventListener('change',keep);
+  function curPri(){var o=box&&$('.pi.on',box);return (o&&PR[o.dataset.p]!=null)?o.dataset.p:'medium'}
+  function setAtPri(p){if(!box||PR[p]==null)p='medium';$$('.pi',box).forEach(function(b){b.classList.toggle('on',b.dataset.p===p)});return p}
+  setAtPri(PR[s0.pri]!=null?s0.pri:'medium');
+  function keep(){save(ATK,{text:inp.value,cat:sel.value,pri:curPri()})}inp.addEventListener('input',keep);sel.addEventListener('change',keep);
+  if(box)$$('.pi',box).forEach(function(b){b.addEventListener('click',function(){setAtPri(b.dataset.p);keep();buzz(8)})});
   function add(){var v=inp.value.trim();if(!v){inp.focus();toast('Type the task first');return}
-    var cat=sel.value||'todo',name=sel.options[sel.selectedIndex]?sel.options[sel.selectedIndex].text:'To-do',id='n'+rid();
-    var p={type:'action',action:'add_task',text:v,category:name,category_key:cat,pending_id:id,key:null,label:null,title:v,source_url:null,sent_at:et(Date.now())};
-    var items=pend();items.push({id:id,text:v,cat:cat,at:Date.now(),status:'sending'});setPend(items);
-    inp.value='';save(ATK,{text:'',cat:'todo'});sel.value='todo';buzz([12,40,12]);
+    var cat=sel.value||'todo',name=sel.options[sel.selectedIndex]?sel.options[sel.selectedIndex].text:'To-do',id='n'+rid(),pri=curPri();
+    var p={type:'action',action:'add_task',text:v,category:name,category_key:cat,priority:pri,pending_id:id,key:null,label:null,title:v,source_url:null,sent_at:et(Date.now())};
+    var items=pend();items.push({id:id,text:v,cat:cat,pri:pri,at:Date.now(),status:'sending'});setPend(items);
+    inp.value='';save(ATK,{text:'',cat:'todo',pri:'medium'});sel.value='todo';setAtPri('medium');buzz([12,40,12]);
     function mark(s){setPend(pend().map(function(it){if(it.id===id)it.status=s;return it}))}
     if(!connected()){var q=queue();q.push(p);setQueue(q);mark('queued');toast('Added · queued (connect ⚙ to send)');return}
     post(p).then(function(r){if(r.ok){mark('sent');toast('Added · sent to To-do')}else{var q=queue();q.push(p);setQueue(q);mark('queued');toast('Added here · not sent ('+r.error.split(' · ')[0]+'), queued')}})}
